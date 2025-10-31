@@ -1,0 +1,44 @@
+/* estilo base del body */
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
+}
+
+/* barra de navegacion */
+.navbar {
+  background: linear-gradient(90deg, #bfe9e4 0%, #dff6f3 100%);
+}
+
+/* tarjeta de estadisticas */
+.stat-card {
+  border: none;
+  background-color: #eaf7f5;
+  border-radius: 14px;
+  transition: transform 0.2s ease;
+}
+
+/* efecto hover en tarjeta */
+.stat-card:hover {
+  transform: scale(1.02);
+}
+
+/* titulo de tarjeta */
+.stat-card h3 {
+  color: #066;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* descripcion de tarjeta */
+.stat-card p {
+  margin: 2px 0 0;
+  color: #2b6;
+}
+
+/* tarjeta de graficas */
+.chart-card {
+  border: none;
+  border-radius: 14px;
+  background: #f2fbfa;
+}

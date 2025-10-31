@@ -1,0 +1,25 @@
+/* variables globales para colores y fuente */
+:root {
+  --color-principal: #00a6a6;
+  --color-secundario: #40cfcf;
+  --color-fondo: #f6fbfb;
+  --color-texto: #053c3c;
+  --color-input-bg: #f9fdfd;
+  --color-input-border: #cce7e7;
+  --color-error: #d93025;
+  --fuente-principal: "Segoe UI", system-ui, Arial, sans-serif;
+}
+
+/* reset de margenes y padding */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* estilo base del body */
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}

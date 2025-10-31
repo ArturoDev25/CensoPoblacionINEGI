@@ -1,0 +1,106 @@
+/* fondo y centrado del login */
+body {
+  background: linear-gradient(180deg, #c7ecec 0%, #e9f7f7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* contenedor principal del login */
+.login-container {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 380px;
+  padding: 40px 40px 25px;
+  text-align: center;
+}
+
+/* titulo institucional*/
+.logo-title {
+  font-size: 1em; /* mismo tamaño para ambas palabras */
+  font-weight: 700;
+  color: #007777;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px; /* espacio entre letras */
+}
+
+/* titulo de la seccion */
+h2 {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #003f3f;
+  margin-bottom: 25px;
+}
+
+/* grupo de campos de entrada */
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* estilo de los inputs */
+.form-group input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 10px;
+  background-color: var(--color-input-bg);
+  font-size: 15px;
+  color: #003f3f;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+/* efecto al enfocar el input */
+.form-group input:focus {
+  border-color: var(--color-principal);
+}
+
+/* iconos dentro del input */
+.form-group i {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  color: var(--color-principal);
+}
+
+/* boton de ingreso */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--color-principal) 0%, var(--color-secundario) 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* efecto hover del boton */
+button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(90deg, #009191 0%, #36b8b8 100%);
+}
+
+/* mensaje de error */
+p.error {
+  color: var(--color-error);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* pie de pagina */
+.footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #777;
+}
+
+.footer span {
+  font-weight: 500;
+  color: #004d4d;
+}
