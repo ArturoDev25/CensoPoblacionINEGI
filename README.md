@@ -16,7 +16,29 @@ El sistema permite administrar **usuarios, viviendas y localidades**, aplicando 
 El proyecto forma parte del **Proyecto Parcial 2 – Arquitectura de Software**, implementando conceptos de modelado, diseño en capas y patrones arquitectónicos modernos.
 
 ---
+## 🚀 Tecnologías utilizadas
 
+| Tecnología | Descripción |
+|-------------|--------------|
+| **Java 17** | Lenguaje principal del proyecto |
+| **Spring Boot 3.x** | Framework para el backend |
+| **Spring Data JPA** | Mapeo objeto-relacional con la base de datos |
+| **Thymeleaf** | Motor de plantillas para vistas dinámicas |
+| **Bootstrap 5** | Framework CSS para diseño responsivo |
+| **PostgreSQL (Supabase)** | Base de datos en la nube |
+| **Maven** | Gestión de dependencias y empaquetado |
+
+---
+
+## 🧩 Arquitectura del proyecto
+
+El proyecto sigue la arquitectura **MVC (Modelo–Vista–Controlador)**, donde:
+
+- **Model** → Contiene las entidades y la lógica de acceso a datos.  
+- **View** → Son las plantillas HTML dinámicas con **Thymeleaf**.  
+- **Controller** → Gestiona las peticiones HTTP y coordina la comunicación entre la vista y el modelo.
+
+---
 
 
 ## ⚙️ Configuración del entorno
