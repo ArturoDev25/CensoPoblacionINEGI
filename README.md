@@ -48,5 +48,14 @@ El proyecto sigue la arquitectura **MVC (Modelo–Vista–Controlador)**, donde:
 ```bash
 git clone https://github.com/ArturoDev25/CensoDePoblacionINEGI-Update1.git
 cd CensoDePoblacionINEGI-Update1
-
-
+```
+2. Instalar Maven en CMD windows
+```bash
+mvnw.cmd clean install
+```
+3. Descarga las dependencias en vs
+  ```
+Extension Pack for Java
+Spring Boot Extension Pack
+Maven for Java
+```
