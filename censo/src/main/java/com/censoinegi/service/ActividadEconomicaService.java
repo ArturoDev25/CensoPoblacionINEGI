@@ -30,4 +30,8 @@ public class ActividadEconomicaService {
     public void deleteById(Integer id) {
         actividadEconomicaRepository.deleteById(id);
     }
+    // Nuevo metodo--metodo para contar actividades economicas M
+    public long contarActividades() {
+    return actividadEconomicaRepository.count();
+    }
 }

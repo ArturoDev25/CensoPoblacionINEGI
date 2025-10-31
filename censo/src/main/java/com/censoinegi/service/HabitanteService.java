@@ -31,4 +31,8 @@ public class HabitanteService {
     public void deleteById(UUID id) {
         habitanteRepository.deleteById(id);
     }
+    // Nuevo metodo--metodo para contar habitantes M
+    public long contarHabitantes() {
+    return habitanteRepository.count();
+}
 }

@@ -33,7 +33,7 @@ public class LoginController {
         Usuario usuario = usuarioService.autenticar(correo, password);
 
         if (usuario != null) {
-            return "redirect:/menu";
+            return "redirect:/dashboard"; // Redirigir al dashboard si el login es exitoso
         } else {
             model.addAttribute("error", "Correo o contraseña incorrectos");
             return "login";

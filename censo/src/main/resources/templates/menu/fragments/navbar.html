@@ -1,0 +1,14 @@
+<!— templates/menu/fragments/navbar.html —>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm" th:fragment="navbar">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold text-success" href="#" aria-label="Censo INEGI">Censo INEGI</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" th:href="@{/municipios}">Municipios</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/viviendas}">Viviendas</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/habitantes}">Habitantes</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" th:href="@{/logout}">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

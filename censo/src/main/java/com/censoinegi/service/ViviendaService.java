@@ -31,4 +31,8 @@ public class ViviendaService {
     public void deleteById(UUID id) {
         viviendaRepository.deleteById(id);
     }
+         // Nuevo metodo--metodo para contar viviendas M 
+    public long contarViviendas() {
+        return viviendaRepository.count();
+    }
 }
