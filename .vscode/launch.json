@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CensoInegiApplication<censo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.censoinegi.CensoInegiApplication",
+            "projectName": "censo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
