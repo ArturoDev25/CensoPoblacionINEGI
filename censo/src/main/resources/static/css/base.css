@@ -1,4 +1,4 @@
-/* variables globales para colores y fuente */
+
 :root {
   --color-principal: #00a6a6;
   --color-secundario: #40cfcf;
@@ -10,16 +10,69 @@
   --fuente-principal: "Segoe UI", system-ui, Arial, sans-serif;
 }
 
-/* reset de margenes y padding */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* estilo base del body */
+
 body {
   font-family: var(--fuente-principal);
   background-color: var(--color-fondo);
   color: var(--color-texto);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Tarjetas de estadísticas */
+.stat-card {
+  background: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+  color: var(--color-principal);
+  font-weight: 700;
+}
+
+.chart-card {
+  border: none;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Modo oscuro */
+:root.dark-mode {
+  --color-principal: #33d1d1;
+  --color-secundario: #00a6a6;
+  --color-fondo: #001c1c;
+  --color-texto: #e8fafa;
+  --color-input-bg: #002d2d;
+  --color-input-border: #007f7f;
+  --color-error: #ff6f61;
+}
+
+.dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-toggle:hover {
+  background-color: var(--color-secundario);
+  transform: scale(1.05);
 }
