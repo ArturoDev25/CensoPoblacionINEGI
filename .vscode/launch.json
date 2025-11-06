@@ -1,14 +1,16 @@
 {
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Spring Boot-CensoInegiApplication<censo>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "com.censoinegi.CensoInegiApplication",
-            "projectName": "censo",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot - CensoInegiApplication",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/censo",
+      "mainClass": "com.censoinegi.CensoInegiApplication",
+      "projectName": "censo",
+      "args": "--spring.profiles.active=dev",
+      "envFile": "${workspaceFolder}/censo/.env",
+      "vmArgs": "-Dfile.encoding=UTF-8"
+    }
+  ]
 }
