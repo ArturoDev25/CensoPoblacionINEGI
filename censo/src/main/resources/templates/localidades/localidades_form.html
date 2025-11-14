@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}"></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/localidad_form.css}">
+</head>
+
+<body>
+  <div class="form-wrapper">
+    <div class="form-container">
+      <h1 class="form-title" th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}">Nueva Localidad</h1>
+
+      <form th:action="@{/localidades/guardar}" th:object="${localidad}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-4">
+          <label class="form-label-custom">Nombre de la Localidad</label>
+          <input type="text" class="form-control-custom" th:field="*{nombre}" required placeholder="Ej: Centro Histórico Saltillo">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label-custom">Clave INEGI</label>
+          <input type="text" class="form-control-custom" th:field="*{claveInegi}" maxlength="50" placeholder="Ej: 05030A (opcional)">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label-custom">Municipio</label>
+          <select class="form-select-custom" th:field="*{municipio.id}" required>
+            <option value="">Seleccione un municipio</option>
+            <option th:each="m : ${municipios}" 
+                    th:value="${m.id}" 
+                    th:text="${m.nombre}">
+            </option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <a th:href="@{/localidades}" class="btn-volver">Volver</a>
+          <div>
+            <button type="submit" class="btn-guardar">Guardar</button>
+            <a th:href="@{/localidades}" class="btn-cancelar">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

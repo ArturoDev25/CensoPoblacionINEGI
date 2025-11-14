@@ -20,11 +20,17 @@ public class Municipio {
     private String nombre;
     private String claveInegi;
 
-    @OneToMany(mappedBy = "municipio")
-    private List<Localidad> localidades;
+    // --------------------------------------------------------------
+    // 🔥 AGREGADO: Relaciones 1-N para que se muestren localidades y viviendas
+    // --------------------------------------------------------------
 
     @OneToMany(mappedBy = "municipio")
-    private List<Vivienda> viviendas;
+    private List<Localidad> localidades;   // <-- agregado
+
+    @OneToMany(mappedBy = "municipio")
+    private List<Vivienda> viviendas;      // <-- agregado
+
+    // --------------------------------------------------------------
 
     // Getters y Setters
     public UUID getId() {
@@ -51,19 +57,20 @@ public class Municipio {
         this.claveInegi = claveInegi;
     }
 
-    public List<Localidad> getLocalidades() {
+    // Getters agregados para relaciones
+    public List<Localidad> getLocalidades() {   // <-- agregado
         return localidades;
     }
 
-    public void setLocalidades(List<Localidad> localidades) {
+    public void setLocalidades(List<Localidad> localidades) {   // <-- agregado
         this.localidades = localidades;
     }
 
-    public List<Vivienda> getViviendas() {
+    public List<Vivienda> getViviendas() {   // <-- agregado
         return viviendas;
     }
 
-    public void setViviendas(List<Vivienda> viviendas) {
+    public void setViviendas(List<Vivienda> viviendas) {  // <-- agregado
         this.viviendas = viviendas;
     }
 }

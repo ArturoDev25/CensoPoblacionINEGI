@@ -31,4 +31,17 @@ public class LocalidadService {
     public void deleteById(UUID id) {
         localidadRepository.deleteById(id);
     }
+
+    // Método para el select dinámico
+    public List<Localidad> findByMunicipioId(UUID municipioId) {
+        return localidadRepository.findByMunicipioId(municipioId);
+
+    }
 }
+
+    // Nuevo metodo--metodo para contar
+    //public long contarLocalidades() {
+    //return LocalidadRepository.count();
+   // }
+//}
+    

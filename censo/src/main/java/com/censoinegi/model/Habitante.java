@@ -3,12 +3,7 @@ package com.censoinegi.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "habitantes")
@@ -18,7 +13,7 @@ public class Habitante {
     @GeneratedValue
     private UUID id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vivienda_id")
     private Vivienda vivienda;
 
@@ -26,7 +21,7 @@ public class Habitante {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String genero;
-    private int edad;
+    private Integer edad;  
     private String parentesco;
     private String ocupacion;
     private String escolaridad;
@@ -82,11 +77,11 @@ public class Habitante {
         this.genero = genero;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 

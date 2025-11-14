@@ -100,7 +100,30 @@ p.error {
   color: #777;
 }
 
-.footer span {
-  font-weight: 500;
-  color: #004d4d;
+.error {
+  color: #ff4444;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
 }
+
+.logout-msg {
+  color: #007777;
+  background: #e6f9f9;
+  border: 1px solid #b3eeee;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+/* Efecto fade-out */
+.logout-msg.fade-out {
+  opacity: 0;
+}
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${municipio.id == null ? 'Nuevo Municipio' : 'Editar Municipio'}"></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/municipio_form.css}">
+</head>
+
+<body>
+  <div class="form-wrapper">
+    <div class="form-container">
+      <h1 class="form-title" th:text="${municipio.id == null ? 'Nuevo Municipio' : 'Editar Municipio'}">Nuevo Municipio</h1>
+
+      <form th:action="@{/municipios/guardar}" th:object="${municipio}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-4">
+          <label class="form-label-custom">Nombre del Municipio</label>
+          <input type="text" 
+                 class="form-control-custom" 
+                 th:field="*{nombre}" 
+                 placeholder="Ej: Saltillo, Torreón, Monclova..."
+                 required>
+          <small class="form-text text-muted">Ingrese el nombre oficial del municipio</small>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label-custom">Clave INEGI</label>
+          <input type="text" 
+                 class="form-control-custom" 
+                 th:field="*{claveInegi}" 
+                 placeholder="Ej: 05030"
+                 maxlength="50">
+          <small class="form-text text-muted">Clave única de identificación del INEGI (opcional)</small>
+        </div>
+
+        <div class="info-box mb-4">
+          <div class="info-icon">ℹ️</div>
+          <div>
+            <strong>Importante:</strong> El municipio podrá tener localidades y viviendas asociadas después de ser creado.
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a th:href="@{/municipios}" class="btn-volver">Volver</a>
+          <div>
+            <button type="submit" class="btn-guardar">Guardar</button>
+            <a th:href="@{/municipios}" class="btn-cancelar">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

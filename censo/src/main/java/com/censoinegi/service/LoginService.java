@@ -1,37 +1,32 @@
 package com.censoinegi.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.web.context.WebApplicationContext;
+
 import com.censoinegi.model.Usuario;
 
-/**
- * Servicio Singleton que mantiene el estado del usuario activo.
- * Aplica patrón Singleton y desacopla la logica de sesion de los controladores.
- */
+@Service
+@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class LoginService {
+    
+    private Usuario usuarioActivo;
 
-    private static Usuario usuarioActivo;
-
-    private LoginService() {
-        // Constructor privado para evitar instanciacion 
-    }
-
-    public static Usuario getUsuarioActivo() {
+    public Usuario getUsuarioActivo() {
         return usuarioActivo;
     }
 
-    public static void iniciarSesion(Usuario usuario) {
-        usuarioActivo = usuario;
+    public void iniciarSesion(Usuario usuario) {
+        this.usuarioActivo = usuario;
     }
 
-    public static void cerrarSesion() {
-        usuarioActivo = null;
+    public void cerrarSesion() {
+        this.usuarioActivo = null;
     }
 
-    public static boolean haySesionActiva() {
+    public boolean haySesionActiva() {
         return usuarioActivo != null;
     }
+    
 }
-
-
-
-
-

@@ -5,35 +5,58 @@
 
     <meta charset="UTF-8">
     <title>Iniciar Sesión | Censo INEGI</title>
-   <link th:href="@{/css/base.css}" rel="stylesheet" />
+
+    <!-- CSS principal -->
+    <link th:href="@{/css/base.css}" rel="stylesheet" />
     <link th:href="@{/css/login.css}" rel="stylesheet" />
 
+    <!-- Iconos -->
     <script src="https://kit.fontawesome.com/a2d9a32f6d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="login-container">
-    <h1 class="logo-title">Censo INEGI</h1>
-    <h2>Iniciar Sesión</h2>
-        <form th:action="@{/login}" method="post">
+        <h1 class="logo-title">Censo INEGI</h1>
+        <h2>Iniciar Sesión</h2>
+
+        <!-- Formulario de login -->
+        <form th:action="@{/login}" method="post" class="login-form">
             <div class="form-group">
-                <input type="email" name="correo" placeholder="Correo" required>
+                <input type="email" name="correo" placeholder="Correo electrónico" required autofocus />
                 <i class="fa-solid fa-user"></i>
             </div>
 
             <div class="form-group">
-                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="password" name="password" placeholder="Contraseña" required />
                 <i class="fa-solid fa-lock"></i>
             </div>
 
-            <button type="submit">Ingresar</button>
+            <button type="submit" class="btn-login">Ingresar</button>
 
+            <!-- Mensaje de error -->
             <p th:if="${error}" th:text="${error}" class="error"></p>
+
+            <!-- Mensaje de logout -->
+            <p th:if="${logoutMsg}" th:text="${logoutMsg}" class="logout-msg"></p>
+
         </form>
 
         <div class="footer">
             <p>© 2025 <span>Censo de Población INEGI</span></p>
         </div>
+
+        <!-- Ocultar mensaje de logout automáticamente -->
+       <script>
+  setTimeout(() => {
+    const msg = document.querySelector('.logout-msg');
+    if (msg) msg.classList.add('fade-out');
+  }, 3500);
+  setTimeout(() => {
+    const msg = document.querySelector('.logout-msg');
+    if (msg) msg.style.display = 'none';
+  }, 4500);
+</script>
+
     </div>
 </body>
 

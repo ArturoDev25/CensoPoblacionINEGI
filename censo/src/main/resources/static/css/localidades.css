@@ -1,0 +1,196 @@
+/* Navbar estilo Dashboard */
+.navbar.app-bar {
+  background: linear-gradient(180deg, #c7ecec 0%, #e9f7f7 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar.app-bar .nav-link {
+  color: #006666 !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navbar.app-bar .nav-link:hover,
+.navbar.app-bar .nav-link.active {
+  color: #003f3f !important;
+  font-weight: 600;
+}
+
+/* Fondo blanco para este módulo */
+body {
+  background-color: #ffffff !important;
+}
+
+/* Contenedor principal */
+.localidades-container {
+  max-width: 1100px;
+}
+
+/* Contador */
+.contador-localidades {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Botón Nueva Localidad */
+.btn-main {
+  background: linear-gradient(90deg, #00a6a6 0%, #40cfcf 100%);
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 166, 166, 0.2);
+}
+
+.btn-main:hover {
+  background: linear-gradient(90deg, #009191 0%, #36b8b8 100%);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Botón Volver */
+.btn-back {
+  background-color: #e9f7f7;
+  border: 1px solid #c7ecec;
+  color: #007777;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-back:hover {
+  background-color: #d6f3f3;
+  transform: translateY(-2px);
+  color: #005f5f;
+}
+
+/* Tarjeta de la tabla */
+.localidades-card {
+  background: #f8fdfd;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0f5f5;
+}
+
+/* Tabla general */
+.table {
+  margin-bottom: 0;
+}
+
+.table thead {
+  background-color: #e9f7f7;
+  border-bottom: 2px solid #c7ecec;
+}
+
+.table thead th {
+  color: #007777;
+  font-weight: 600;
+  padding: 16px 12px;
+  font-size: 0.95rem;
+  border: none;
+}
+
+.table tbody td {
+  padding: 14px 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f8f8;
+  color: #053c3c;
+}
+
+/* Hover ultra suave en filas */
+.localidad-row {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.localidad-row:hover {
+  background-color: #f6fefe !important;
+  box-shadow: 0 2px 6px rgba(0, 166, 166, 0.10);
+}
+
+.localidad-row:hover td {
+  background-color: #f6fefe !important;
+}
+
+/* Badge Clave INEGI */
+.badge-clave {
+  background-color: #e0f5f5;
+  color: #007777;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Badge Contador */
+.badge-contador {
+  background-color: #00a6a6;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Botón editar */
+.btn-edit {
+  background-color: #00a6a6;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-right: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+  background-color: #008f8f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 166, 166, 0.3);
+  color: white;
+}
+
+/* Botón eliminar */
+.btn-delete {
+  background-color: #1a4d4d;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #0d2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(26, 77, 77, 0.4);
+  color: white;
+}
+
+/* Mensaje de tabla vacía */
+.table-empty {
+  text-align: center;
+  padding: 40px 0;
+  color: #666666;
+  font-size: 1rem;
+}
+
+.table-empty i {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #00a6a6;
+}
+
+.table-empty p {
+  margin: 0;
+}

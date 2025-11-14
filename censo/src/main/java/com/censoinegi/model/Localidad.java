@@ -29,7 +29,7 @@ public class Localidad {
     @OneToMany(mappedBy = "localidad")
     private List<Vivienda> viviendas;
 
-    // Getters y Setters
+    
     public UUID getId() {
         return id;
     }

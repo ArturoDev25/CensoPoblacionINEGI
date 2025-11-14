@@ -1,6 +1,5 @@
 package com.censoinegi.controller;
 
-
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,99 +10,86 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.censoinegi.model.Vivienda;
-import com.censoinegi.service.MunicipioService;
-import com.censoinegi.service.TipoViviendaService;
-import com.censoinegi.service.ViviendaService;
-
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.censoinegi.service.*;
+
+import com.censoinegi.model.Municipio;
+import com.censoinegi.service.MunicipioService;
+import com.censoinegi.service.LoginService;
+
 /**
- * Controlador WEB para gestión de viviendas (vistas HTML)
+ * Controlador WEB para gestión de municipios (vistas HTML)
  */
 @Controller
-@RequestMapping("/viviendas")
-public class ViviendaWebController {
-
-    @Autowired
-    private ViviendaService viviendaService;
+@RequestMapping("/municipios")
+public class MunicipioWebController {
 
     @Autowired
     private MunicipioService municipioService;
 
     @Autowired
-    private TipoViviendaService tipoViviendaService;
-
-    @Autowired
     private LoginService loginService;
 
-    // Listar viviendas
+    // Listar municipios
     @GetMapping
     public String listar(Model model) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
 
-        model.addAttribute("viviendas", viviendaService.findAll());
+        model.addAttribute("municipios", municipioService.findAll());
         model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-        return "viviendas/viviendas";
+        return "municipios/municipios";
     }
 
-    // Formulario nueva vivienda
-    @GetMapping("/nueva")
-    public String nueva(Model model) {
+    // Formulario nuevo municipio
+    @GetMapping("/nuevo")
+    public String nuevo(Model model) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
 
-        model.addAttribute("vivienda", new Vivienda());
-        model.addAttribute("municipios", municipioService.findAll());
-        model.addAttribute("tipos", tipoViviendaService.findAll());
+        model.addAttribute("municipio", new Municipio());
         model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-        return "viviendas/vivienda_form";
+        return "municipios/municipios_form";
     }
 
-    // Formulario editar vivienda
+    // Formulario editar municipio
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable UUID id, Model model, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
 
-        return viviendaService.findById(id)
-            .map(vivienda -> {
-                model.addAttribute("vivienda", vivienda);
-                model.addAttribute("municipios", municipioService.findAll());
-                model.addAttribute("tipos", tipoViviendaService.findAll());
+        return municipioService.findById(id)
+            .map(municipio -> {
+                model.addAttribute("municipio", municipio);
                 model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-                return "viviendas/vivienda_form";
+                return "municipios/municipio_form";
             })
             .orElseGet(() -> {
-                redirect.addFlashAttribute("error", "Vivienda no encontrada");
-                return "redirect:/viviendas";
+                redirect.addFlashAttribute("error", "Municipio no encontrado");
+                return "redirect:/municipios";
             });
     }
 
-    // Guardar vivienda
+    // Guardar municipio
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Vivienda vivienda, RedirectAttributes redirect) {
+    public String guardar(@ModelAttribute Municipio municipio, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
 
         try {
-            viviendaService.save(vivienda);
-            redirect.addFlashAttribute("success", "Vivienda guardada exitosamente");
+            municipioService.save(municipio);
+            redirect.addFlashAttribute("success", "Municipio guardado exitosamente");
         } catch (Exception e) {
             redirect.addFlashAttribute("error", "Error: " + e.getMessage());
         }
 
-        return "redirect:/viviendas";
+        return "redirect:/municipios";
     }
-    
 
-    // Eliminar vivienda
+    // Eliminar municipio
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable UUID id, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
@@ -111,12 +97,12 @@ public class ViviendaWebController {
         }
 
         try {
-            viviendaService.deleteById(id);
-            redirect.addFlashAttribute("success", "Vivienda eliminada");
+            municipioService.deleteById(id);
+            redirect.addFlashAttribute("success", "Municipio eliminado exitosamente");
         } catch (Exception e) {
-            redirect.addFlashAttribute("error", " Error al eliminar");
+            redirect.addFlashAttribute("error", "Error al eliminar: " + e.getMessage());
         }
 
-        return "redirect:/viviendas";
+        return "redirect:/municipios";
     }
 }

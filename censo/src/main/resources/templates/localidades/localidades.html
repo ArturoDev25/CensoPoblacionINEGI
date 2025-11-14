@@ -3,10 +3,10 @@
   
 <head>
   <meta charset="UTF-8">
-  <title>Censo de Viviendas</title>
+  <title>Censo de Localidades</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/css/base.css}">
-  <link rel="stylesheet" th:href="@{/css/viviendas.css}">
+  <link rel="stylesheet" th:href="@{/css/localidades.css}">
 </head>
 
 <body>
@@ -21,7 +21,8 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" th:href="@{/municipios}">Municipios</a></li>
-          <li class="nav-item"><a class="nav-link active" th:href="@{/viviendas}">Viviendas</a></li>
+          <li class="nav-item"><a class="nav-link active" th:href="@{/localidades}">Localidades</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/viviendas}">Viviendas</a></li>
           <li class="nav-item"><a class="nav-link" th:href="@{/habitantes}">Habitantes</a></li>
           <li class="nav-item"><a class="nav-link text-danger" th:href="@{/logout}">Cerrar sesión</a></li>
         </ul>
@@ -30,57 +31,59 @@
   </nav>
 
   <!-- Contenedor principal -->
-  <div class="container my-5 viviendas-container">
+  <div class="container my-5 localidades-container">
 
     <!-- Contador -->
-    <p class="text-end text-muted small contador-viviendas">
+    <p class="text-end text-muted small contador-localidades">
       Total:
-      <span th:text="${#lists.size(viviendas)}"></span>
-      <span th:text="${#lists.size(viviendas) == 1 ? 'vivienda registrada' : 'viviendas registradas'}"></span>
+      <span th:text="${#lists.size(localidades)}"></span>
+      <span th:text="${#lists.size(localidades) == 1 ? 'localidad registrada' : 'localidades registradas'}"></span>
     </p>
 
     <!-- Título -->
-    <h2 class="fw-bold text-center mb-4">Censo de Viviendas</h2>
+    <h2 class="fw-bold text-center mb-4">Censo de Localidades</h2>
 
-    <!-- Botón nueva vivienda -->
+    <!-- Botón nueva localidad -->
     <div class="text-end mb-3">
-      <a th:href="@{/viviendas/nueva}" class="btn btn-main">Nueva Vivienda</a>
+      <a th:href="@{/localidades/nueva}" class="btn btn-main">Nueva Localidad</a>
     </div>
 
     <!-- Tarjeta con tabla -->
-    <div class="viviendas-card p-4">
+    <div class="localidades-card p-4">
       <table class="table align-middle text-center">
         <thead>
           <tr>
-            <th>Dirección</th>
-            <th>Tipo</th>
-            <th>Habitantes</th>
-            <th>Servicios</th>
+            <th>Nombre</th>
+            <th>Clave INEGI</th>
             <th>Municipio</th>
+            <th>Viviendas</th>
             <th>Acciones</th>
           </tr>
         </thead>
 
         <tbody>
           <!-- FILAS DE DATOS CON HOVER -->
-          <tr th:each="v : ${viviendas}" class="vivienda-row">
-            <td th:text="${v.direccion}">Dirección</td>
-            <td th:text="${v.tipoVivienda != null ? v.tipoVivienda.descripcion : 'N/A'}">Tipo</td>
-            <td th:text="${v.numHabitantes}">0</td>
-            <td th:text="${v.tieneServiciosBasicos} ? 'Sí' : 'No'">Sí</td>
-            <td th:text="${v.municipio != null ? v.municipio.nombre : 'N/A'}">Municipio</td>
+          <tr th:each="l : ${localidades}" class="localidad-row">
+            <td th:text="${l.nombre}">Centro Histórico</td>
             <td>
-              <a th:href="@{'/viviendas/editar/' + ${v.id}}" class="btn btn-edit">Editar</a>
-              <a th:href="@{'/viviendas/eliminar/' + ${v.id}}"
+              <span class="badge-clave" th:text="${l.claveInegi != null ? l.claveInegi : 'Sin clave'}">05030A</span>
+            </td>
+            <td th:text="${l.municipio != null ? l.municipio.nombre : 'N/A'}">Saltillo</td>
+            <td>
+              <span class="badge-contador" th:text="${l.viviendas != null ? l.viviendas.size() : 0}">0</span>
+            </td>
+            <td>
+              <a th:href="@{'/localidades/editar/' + ${l.id}}" class="btn btn-edit">Editar</a>
+              <a th:href="@{'/localidades/eliminar/' + ${l.id}}"
                  class="btn btn-delete"
-                 onclick="return confirm('¿Eliminar esta vivienda?')">Eliminar</a>
+                 onclick="return confirm('¿Eliminar esta localidad?')">Eliminar</a>
             </td>
           </tr>
 
           <!-- MENSAJE SI LA LISTA ESTÁ VACÍA -->
-          <tr th:if="${#lists.isEmpty(viviendas)}">
-            <td colspan="6" class="text-center py-4 text-muted">
-              No hay viviendas registradas
+          <tr th:if="${#lists.isEmpty(localidades)}">
+            <td colspan="5" class="text-center py-4 text-muted">
+              No hay localidades registradas
             </td>
           </tr>
         </tbody>
