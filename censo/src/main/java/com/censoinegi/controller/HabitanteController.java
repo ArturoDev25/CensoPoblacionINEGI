@@ -42,7 +42,7 @@ public class HabitanteController {
     }
 
     @PutMapping("/{id}")
-    public Habitante update(@PathVariable UUID id, @RequestBody Habitante habitante) {
+    public Habitante update(@PathVariable String id, @RequestBody Habitante habitante) {
         habitante.setId(id);
         return habitanteService.save(habitante);
     }

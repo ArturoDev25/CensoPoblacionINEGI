@@ -1,8 +1,8 @@
 package com.censoinegi.service;
 
-import org.springframework.stereotype.Service;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.censoinegi.model.Usuario;

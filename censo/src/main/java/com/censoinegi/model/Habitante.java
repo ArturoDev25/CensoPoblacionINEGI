@@ -1,17 +1,23 @@
 package com.censoinegi.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "habitantes")
 public class Habitante {
 
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vivienda_id")
@@ -29,11 +35,11 @@ public class Habitante {
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 
     // Getters y Setters
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

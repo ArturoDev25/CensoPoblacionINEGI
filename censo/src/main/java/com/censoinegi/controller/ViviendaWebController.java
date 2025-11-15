@@ -1,8 +1,5 @@
 package com.censoinegi.controller;
 
-
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +8,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.censoinegi.model.Vivienda;
+import com.censoinegi.service.LoginService;
 import com.censoinegi.service.MunicipioService;
 import com.censoinegi.service.TipoViviendaService;
 import com.censoinegi.service.ViviendaService;
 
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.censoinegi.service.*;
-/**
- * Controlador WEB para gestión de viviendas (vistas HTML)
- */
 @Controller
 @RequestMapping("/viviendas")
 public class ViviendaWebController {
@@ -64,9 +58,9 @@ public class ViviendaWebController {
         return "viviendas/vivienda_form";
     }
 
-    // Formulario editar vivienda
+    // 👉 CAMBIO: id ahora es String para coincidir con Vivienda.id
     @GetMapping("/editar/{id}")
-    public String editar(@PathVariable UUID id, Model model, RedirectAttributes redirect) {
+    public String editar(@PathVariable Integer id, Model model, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
@@ -85,27 +79,30 @@ public class ViviendaWebController {
             });
     }
 
-    // Guardar vivienda
+    // Guardar vivienda (nueva o editada)
+    // 👉 CAMBIO: nombre correcto del RedirectAttributes y debug
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Vivienda vivienda, RedirectAttributes redirect) {
+    public String guardar(@ModelAttribute("vivienda") Vivienda vivienda,
+                          RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
 
         try {
+            System.out.println("GUARDANDO VIVIENDA -> " + vivienda.getDireccion()); // DEBUG
             viviendaService.save(vivienda);
             redirect.addFlashAttribute("success", "Vivienda guardada exitosamente");
         } catch (Exception e) {
-            redirect.addFlashAttribute("error", "Error: " + e.getMessage());
+            e.printStackTrace();
+            redirect.addFlashAttribute("error", "Error al guardar vivienda: " + e.getMessage());
         }
 
         return "redirect:/viviendas";
     }
-    
 
-    // Eliminar vivienda
+    // 👉 CAMBIO: id también como String
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable UUID id, RedirectAttributes redirect) {
+    public String eliminar(@PathVariable Integer id, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
@@ -114,6 +111,7 @@ public class ViviendaWebController {
             viviendaService.deleteById(id);
             redirect.addFlashAttribute("success", "Vivienda eliminada");
         } catch (Exception e) {
+            e.printStackTrace();
             redirect.addFlashAttribute("error", " Error al eliminar");
         }
 

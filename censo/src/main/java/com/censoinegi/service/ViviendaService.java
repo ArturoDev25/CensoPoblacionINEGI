@@ -2,7 +2,6 @@ package com.censoinegi.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class ViviendaService {
         return viviendaRepository.findAll();
     }
 
-    public Optional<Vivienda> findById(UUID id) {
+    public Optional<Vivienda> findById(Integer id) {
         return viviendaRepository.findById(id);
     }
 
@@ -28,7 +27,7 @@ public class ViviendaService {
         return viviendaRepository.save(vivienda);
     }
 
-    public void deleteById(UUID id) {
+    public void deleteById(Integer id) {
         viviendaRepository.deleteById(id);
     }
          // Nuevo metodo--metodo para contar viviendas M 

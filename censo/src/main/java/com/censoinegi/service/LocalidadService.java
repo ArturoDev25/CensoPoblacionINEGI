@@ -2,7 +2,6 @@ package com.censoinegi.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class LocalidadService {
         return localidadRepository.findAll();
     }
 
-    public Optional<Localidad> findById(UUID id) {
+    public Optional<Localidad> findById(Integer id) {
         return localidadRepository.findById(id);
     }
 
@@ -28,12 +27,12 @@ public class LocalidadService {
         return localidadRepository.save(localidad);
     }
 
-    public void deleteById(UUID id) {
+    public void deleteById(Integer id) {
         localidadRepository.deleteById(id);
     }
 
     // Método para el select dinámico
-    public List<Localidad> findByMunicipioId(UUID municipioId) {
+    public List<Localidad> findByMunicipioId(Integer municipioId) {
         return localidadRepository.findByMunicipioId(municipioId);
 
     }

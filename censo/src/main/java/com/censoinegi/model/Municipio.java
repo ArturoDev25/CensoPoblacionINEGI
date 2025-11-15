@@ -1,10 +1,10 @@
 package com.censoinegi.model;
 
 import java.util.List;
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -14,8 +14,8 @@ import jakarta.persistence.Table;
 public class Municipio {
 
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String nombre;
     private String claveInegi;
@@ -33,11 +33,11 @@ public class Municipio {
     // --------------------------------------------------------------
 
     // Getters y Setters
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

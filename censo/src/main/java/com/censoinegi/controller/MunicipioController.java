@@ -2,7 +2,6 @@ package com.censoinegi.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +31,7 @@ public class MunicipioController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Municipio> getById(@PathVariable UUID id) {
+    public Optional<Municipio> getById(@PathVariable Integer id) {
         return municipioService.findById(id);
     }
 
@@ -42,13 +41,13 @@ public class MunicipioController {
     }
 
     @PutMapping("/{id}")
-    public Municipio update(@PathVariable UUID id, @RequestBody Municipio municipio) {
+    public Municipio update(@PathVariable Integer id, @RequestBody Municipio municipio) {
         municipio.setId(id);
         return municipioService.save(municipio);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id) {
+    public void delete(@PathVariable Integer id) {
         municipioService.deleteById(id);
     }
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-  
+
 <head>
   <meta charset="UTF-8">
   <title th:text="${vivienda.id == null ? 'Nueva Vivienda' : 'Editar Vivienda'}"></title>
@@ -36,9 +36,7 @@
           <label class="form-label-custom">Tipo de Vivienda</label>
           <select class="form-select-custom" th:field="*{tipoVivienda.id}" required>
             <option value="">Seleccione un tipo</option>
-            <option th:each="t : ${tipos}" 
-                    th:value="${t.id}" 
-                    th:text="${t.descripcion}">
+            <option th:each="t : ${tipos}" th:value="${t.id}" th:text="${t.descripcion}">
             </option>
           </select>
         </div>
@@ -47,9 +45,7 @@
           <label class="form-label-custom">Municipio</label>
           <select class="form-select-custom" th:field="*{municipio.id}" required>
             <option value="">Seleccione un municipio</option>
-            <option th:each="m : ${municipios}" 
-                    th:value="${m.id}" 
-                    th:text="${m.nombre}">
+            <option th:each="m : ${municipios}" th:value="${m.id}" th:text="${m.nombre}">
             </option>
           </select>
         </div>
@@ -65,6 +61,17 @@
           <label class="form-label-custom">Material principal</label>
           <input type="text" class="form-control-custom" th:field="*{materialPrincipal}">
         </div>
+
+        <div class="mb-4">
+          <label class="form-label-custom">Número de Habitaciones</label>
+          <input type="number" class="form-control-custom" th:field="*{numHabitaciones}" min="0">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label-custom">Número de Baños</label>
+          <input type="number" class="form-control-custom" th:field="*{numBanos}" min="0">
+        </div>
+
 
         <div class="form-actions">
           <a th:href="@{/viviendas}" class="btn-volver">Volver</a>

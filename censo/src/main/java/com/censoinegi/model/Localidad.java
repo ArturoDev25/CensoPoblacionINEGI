@@ -1,10 +1,11 @@
 package com.censoinegi.model;
 
 import java.util.List;
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,13 +17,13 @@ import jakarta.persistence.Table;
 public class Localidad {
 
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String nombre;
     private String claveInegi;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "municipio_id")
     private Municipio municipio;
 
@@ -30,11 +31,11 @@ public class Localidad {
     private List<Vivienda> viviendas;
 
     
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

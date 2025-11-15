@@ -2,7 +2,6 @@ package com.censoinegi.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +31,7 @@ public class LocalidadController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Localidad> getById(@PathVariable UUID id) {
+    public Optional<Localidad> getById(@PathVariable Integer id) {
         return localidadService.findById(id);
     }
 
@@ -42,18 +41,18 @@ public class LocalidadController {
     }
 
     @PutMapping("/{id}")
-    public Localidad update(@PathVariable UUID id, @RequestBody Localidad localidad) {
+    public Localidad update(@PathVariable Integer id, @RequestBody Localidad localidad) {
         localidad.setId(id);
         return localidadService.save(localidad);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id) {
+    public void delete(@PathVariable Integer id) {
         localidadService.deleteById(id);
     }
     //Obtener localidades por municipio (para formulario dinámico)
 @GetMapping("/por-municipio/{municipioId}")
-public List<Localidad> getByMunicipio(@PathVariable UUID municipioId) {
+public List<Localidad> getByMunicipio(@PathVariable Integer municipioId) {
     return localidadService.findByMunicipioId(municipioId);
 }
 

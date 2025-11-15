@@ -2,7 +2,6 @@ package com.censoinegi.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class MunicipioService {
         return municipioRepository.findAll();
     }
 
-    public Optional<Municipio> findById(UUID id) {
+    public Optional<Municipio> findById(Integer id) {
         return municipioRepository.findById(id);
     }
 
@@ -28,7 +27,7 @@ public class MunicipioService {
         return municipioRepository.save(municipio);
     }
 
-    public void deleteById(UUID id) {
+    public void deleteById(Integer id) {
         municipioRepository.deleteById(id);
     }
 // Nuevo metodo--metodo para contar municipios M

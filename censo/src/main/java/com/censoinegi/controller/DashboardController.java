@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.censoinegi.service.ViviendaService;
-import com.censoinegi.service.MunicipioService;
-import com.censoinegi.service.HabitanteService;
 //import com.censoinegi.service.LocalidadService;
 import com.censoinegi.service.ActividadEconomicaService;
+import com.censoinegi.service.HabitanteService;
 import com.censoinegi.service.LoginService;
+import com.censoinegi.service.MunicipioService;
+import com.censoinegi.service.ViviendaService;
 
 @Controller
 public class DashboardController {

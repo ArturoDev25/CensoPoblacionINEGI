@@ -3,11 +3,13 @@ package com.censoinegi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.censoinegi.model.Usuario;
-import com.censoinegi.service.UsuarioService;
 import com.censoinegi.service.LoginService;
+import com.censoinegi.service.UsuarioService;
 
 @Controller
 public class LoginController {
