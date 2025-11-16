@@ -1,0 +1,197 @@
+.navbar.app-bar {
+  background: linear-gradient(180deg, #c7ecec 0%, #e9f7f7 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar.app-bar .nav-link {
+  color: #006666 !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navbar.app-bar .nav-link:hover,
+.navbar.app-bar .nav-link.active {
+  color: #003f3f !important;
+  font-weight: 600;
+}
+
+body {
+  background-color: #ffffff !important;
+}
+
+.habitantes-container {
+  max-width: 1400px;
+}
+
+.contador-habitantes {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.btn-main {
+  background: linear-gradient(90deg, #00a6a6 0%, #40cfcf 100%);
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 166, 166, 0.2);
+}
+
+.btn-main:hover {
+  background: linear-gradient(90deg, #009191 0%, #36b8b8 100%);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.btn-back {
+  background-color: #e9f7f7;
+  border: 1px solid #c7ecec;
+  color: #007777;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-back:hover {
+  background-color: #d6f3f3;
+  transform: translateY(-2px);
+  color: #005f5f;
+}
+
+.habitantes-card {
+  background: #f8fdfd;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0f5f5;
+}
+
+.table {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.table thead {
+  background-color: #e9f7f7;
+  border-bottom: 2px solid #c7ecec;
+}
+
+.table thead th {
+  color: #007777;
+  font-weight: 600;
+  padding: 14px 10px;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.table tbody td {
+  padding: 12px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f8f8;
+  color: #053c3c;
+}
+
+.habitante-row {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.habitante-row:hover {
+  background-color: #f6fefe !important;
+  box-shadow: 0 2px 6px rgba(0, 166, 166, 0.10);
+}
+
+.habitante-row:hover td {
+  background-color: #f6fefe !important;
+}
+
+.badge-edad {
+  background-color: #e0f5f5;
+  color: #007777;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.badge-genero-m {
+  background-color: #d4e9ff;
+  color: #0066cc;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.badge-genero-f {
+  background-color: #ffe6f0;
+  color: #cc0066;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.btn-edit {
+  background-color: #00a6a6;
+  color: white;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-right: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+  background-color: #008f8f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 166, 166, 0.3);
+  color: white;
+}
+
+.btn-delete {
+  background-color: #1a4d4d;
+  color: white;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #0d2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(26, 77, 77, 0.4);
+  color: white;
+}
+
+.table-empty {
+  text-align: center;
+  padding: 40px 0;
+  color: #666666;
+  font-size: 1rem;
+}
+
+.table-empty i {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #00a6a6;
+}
+
+.table-empty p {
+  margin: 0;
+}
+
+.nombre-completo {
+  font-weight: 500;
+  color: #053c3c;
+}

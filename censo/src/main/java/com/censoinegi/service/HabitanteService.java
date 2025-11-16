@@ -19,7 +19,8 @@ public class HabitanteService {
         return habitanteRepository.findAll();
     }
 
-    public Optional<Habitante> findById(String id) {
+    public Optional<Habitante> findById(Integer id) {
+        // CAMBIADO DE String a Integer
         return habitanteRepository.findById(id);
     }
 
@@ -27,7 +28,8 @@ public class HabitanteService {
         return habitanteRepository.save(habitante);
     }
 
-    public void deleteById(String id) {
+    public void deleteById(Integer id) {
+        // CAMBIADO DE String a Integer
         habitanteRepository.deleteById(id);
     }
 
@@ -35,3 +37,4 @@ public class HabitanteService {
         return habitanteRepository.count();
     }
 }
+

@@ -31,7 +31,8 @@ public class HabitanteController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Habitante> getById(@PathVariable String id) {
+    public Optional<Habitante> getById(@PathVariable Integer id) {
+        // CAMBIADO DE String a Integer
         return habitanteService.findById(id);
     }
 
@@ -41,13 +42,16 @@ public class HabitanteController {
     }
 
     @PutMapping("/{id}")
-    public Habitante update(@PathVariable String id, @RequestBody Habitante habitante) {
+    public Habitante update(@PathVariable Integer id, @RequestBody Habitante habitante) {
+        // CAMBIADO DE String a Integer
         habitante.setId(id);
         return habitanteService.save(habitante);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id) {
+    public void delete(@PathVariable Integer id) {
+        // CAMBIADO DE String a Integer
         habitanteService.deleteById(id);
     }
 }
+

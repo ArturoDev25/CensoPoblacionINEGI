@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Censo de Habitantes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/habitantes/habitantes.css}">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg shadow-sm app-bar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold" href="#" style="color: #007777;">
+        Censo INEGI
+      </a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" th:href="@{/municipios}">Municipios</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/localidades}">Localidades</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/viviendas}">Viviendas</a></li>
+          <li class="nav-item"><a class="nav-link active" th:href="@{/habitantes}">Habitantes</a></li>
+          <li class="nav-item"><a class="nav-link text-danger" th:href="@{/logout}">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-5 habitantes-container">
+
+    <p class="text-end text-muted small contador-habitantes">
+      Total:
+      <span th:text="${#lists.size(habitantes)}"></span>
+      <span th:text="${#lists.size(habitantes) == 1 ? 'habitante registrado' : 'habitantes registrados'}"></span>
+    </p>
+
+    <h2 class="fw-bold text-center mb-4">Censo de Habitantes</h2>
+
+    <!-- Mensajes de éxito/error -->
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+      <span th:text="${success}"></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <span th:text="${error}"></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <div class="text-end mb-3">
+      <a th:href="@{/habitantes/nuevo}" class="btn btn-main">Nuevo Habitante</a>
+    </div>
+
+    <div class="habitantes-card p-4">
+      <div class="table-responsive">
+        <table class="table align-middle text-center">
+          <thead>
+            <tr>
+              <th>Nombre Completo</th>
+              <th>Género</th>
+              <th>Edad</th>
+              <th>Parentesco</th>
+              <th>Ocupación</th>
+              <th>Escolaridad</th>
+              <th>Estado Civil</th>
+              <th>Vivienda</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr th:each="h : ${habitantes}" class="habitante-row">
+              <td class="nombre-completo">
+                <span th:text="${h.nombre + ' ' + h.apellidoPaterno + ' ' + (h.apellidoMaterno != null ? h.apellidoMaterno : '')}">
+                  Juan Pérez García
+                </span>
+              </td>
+              <td>
+                <span th:class="${h.genero == 'Masculino' ? 'badge-genero-m' : 'badge-genero-f'}"
+                      th:text="${h.genero}">Masculino</span>
+              </td>
+              <td>
+                <span class="badge-edad" th:text="${h.edad + ' años'}">25 años</span>
+              </td>
+              <td th:text="${h.parentesco != null ? h.parentesco : 'N/A'}">Padre</td>
+              <td th:text="${h.ocupacion != null ? h.ocupacion : 'N/A'}">Empleado</td>
+              <td th:text="${h.escolaridad != null ? h.escolaridad : 'N/A'}">Licenciatura</td>
+              <td th:text="${h.estadoCivil != null ? h.estadoCivil : 'N/A'}">Casado</td>
+              <td th:text="${h.vivienda != null ? h.vivienda.direccion : 'Sin vivienda'}">
+                Calle Principal #1
+              </td>
+              <td>
+                <a th:href="@{'/habitantes/editar/' + ${h.id}}" class="btn btn-edit">Editar</a>
+                <a th:href="@{'/habitantes/eliminar/' + ${h.id}}" class="btn btn-delete"
+                  onclick="return confirm('¿Eliminar este habitante?')">Eliminar</a>
+              </td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(habitantes)}">
+              <td colspan="9" class="table-empty">
+                <i>👤</i>
+                <p>No hay habitantes registrados</p>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-4 text-start">
+      <a th:href="@{/dashboard}" class="btn btn-back">Volver al Dashboard</a>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
