@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.censoinegi.model.Habitante;
+import com.censoinegi.service.ActividadEconomicaService;
 import com.censoinegi.service.HabitanteService;
 import com.censoinegi.service.LoginService;
 import com.censoinegi.service.ViviendaService;
@@ -24,6 +25,9 @@ public class HabitanteWebController {
 
     @Autowired
     private ViviendaService viviendaService;
+
+    @Autowired
+    private ActividadEconomicaService actividadEconomicaService;
 
     @Autowired
     private LoginService loginService;
@@ -47,6 +51,7 @@ public class HabitanteWebController {
 
         model.addAttribute("habitante", new Habitante());
         model.addAttribute("viviendas", viviendaService.findAll());
+        model.addAttribute("actividades", actividadEconomicaService.findAll());
         model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
         return "habitantes/habitantes_form";
     }
@@ -61,6 +66,7 @@ public class HabitanteWebController {
                 .map(habitante -> {
                     model.addAttribute("habitante", habitante);
                     model.addAttribute("viviendas", viviendaService.findAll());
+                    model.addAttribute("actividades", actividadEconomicaService.findAll());
                     model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
                     return "habitantes/habitantes_form";
                 })
@@ -79,6 +85,10 @@ public class HabitanteWebController {
 
         try {
             System.out.println("GUARDANDO HABITANTE -> " + habitante.getNombre()); // DEBUG
+            System.out.println("ACTIVIDAD ECONÓMICA -> " + 
+                (habitante.getActividadEconomica() != null ? 
+                    habitante.getActividadEconomica().getNombre() : "Sin actividad")); // DEBUG
+            
             habitanteService.save(habitante);
             redirect.addFlashAttribute("success", "Habitante guardado exitosamente");
         } catch (Exception e) {

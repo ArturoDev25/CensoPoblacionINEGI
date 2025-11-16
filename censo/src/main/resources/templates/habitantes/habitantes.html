@@ -61,7 +61,7 @@
               <th>Género</th>
               <th>Edad</th>
               <th>Parentesco</th>
-              <th>Ocupación</th>
+              <th>Actividad Económica</th>
               <th>Escolaridad</th>
               <th>Estado Civil</th>
               <th>Vivienda</th>
@@ -84,7 +84,12 @@
                 <span class="badge-edad" th:text="${h.edad + ' años'}">25 años</span>
               </td>
               <td th:text="${h.parentesco != null ? h.parentesco : 'N/A'}">Padre</td>
-              <td th:text="${h.ocupacion != null ? h.ocupacion : 'N/A'}">Empleado</td>
+              <td>
+                <span class="badge-actividad" 
+                      th:text="${h.actividadEconomica != null ? h.actividadEconomica.nombre : 'Sin actividad'}">
+                  Comercio
+                </span>
+              </td>
               <td th:text="${h.escolaridad != null ? h.escolaridad : 'N/A'}">Licenciatura</td>
               <td th:text="${h.estadoCivil != null ? h.estadoCivil : 'N/A'}">Casado</td>
               <td th:text="${h.vivienda != null ? h.vivienda.direccion : 'Sin vivienda'}">
@@ -99,7 +104,7 @@
 
             <tr th:if="${#lists.isEmpty(habitantes)}">
               <td colspan="9" class="table-empty">
-                <i>👤</i>
+                <i></i>
                 <p>No hay habitantes registrados</p>
               </td>
             </tr>

@@ -17,11 +17,15 @@ public class Habitante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;  // CAMBIADO DE String a Integer
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vivienda_id")
     private Vivienda vivienda;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "actividad_id")
+    private ActividadEconomica actividadEconomica;
 
     private String nombre;
     private String apellidoPaterno;
@@ -29,9 +33,10 @@ public class Habitante {
     private String genero;
     private Integer edad;
     private String parentesco;
-    private String ocupacion;
+    
     private String escolaridad;
     private String estadoCivil;
+
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 
     // Getters y Setters
@@ -49,6 +54,14 @@ public class Habitante {
 
     public void setVivienda(Vivienda vivienda) {
         this.vivienda = vivienda;
+    }
+
+    public ActividadEconomica getActividadEconomica() {
+        return actividadEconomica;
+    }
+
+    public void setActividadEconomica(ActividadEconomica actividadEconomica) {
+        this.actividadEconomica = actividadEconomica;
     }
 
     public String getNombre() {
@@ -99,13 +112,6 @@ public class Habitante {
         this.parentesco = parentesco;
     }
 
-    public String getOcupacion() {
-        return ocupacion;
-    }
-
-    public void setOcupacion(String ocupacion) {
-        this.ocupacion = ocupacion;
-    }
 
     public String getEscolaridad() {
         return escolaridad;

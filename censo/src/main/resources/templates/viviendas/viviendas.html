@@ -7,6 +7,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/css/base.css}">
   <link rel="stylesheet" th:href="@{/css/viviendas/viviendas.css}">
+  <link rel="stylesheet" th:href="@{/css/viviendas/viviendas_tooltip.css}">
+
 </head>
 
 <body>
@@ -38,6 +40,16 @@
 
     <h2 class="fw-bold text-center mb-4">Censo de Viviendas</h2>
 
+    <!-- Mensajes de éxito/error -->
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+      <span th:text="${success}"></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <span th:text="${error}"></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
     <div class="text-end mb-3">
       <a th:href="@{/viviendas/nueva}" class="btn btn-main">Nueva Vivienda</a>
     </div>
@@ -59,7 +71,16 @@
           <tr th:each="v : ${viviendas}" class="vivienda-row">
             <td th:text="${v.direccion}">Dirección</td>
             <td th:text="${v.tipoVivienda != null ? v.tipoVivienda.descripcion : 'N/A'}">Tipo</td>
-            <td th:text="${v.numHabitantes}">0</td>
+            <td>
+              <span class="habitante-tooltip">
+                <span th:text="${v.numHabitantes}">0</span>
+                <span class="tooltip-content" th:if="${v.habitantes != null and not #lists.isEmpty(v.habitantes)}">
+                  <span th:each="h, iterStat : ${v.habitantes}" class="habitante-nombre">
+                    <span th:text="${h.nombre + ' ' + h.apellidoPaterno + (!#strings.isEmpty(h.apellidoMaterno) ? ' ' + h.apellidoMaterno : '')}"></span>
+                  </span>
+                </span>
+              </span>
+            </td>
             <td th:text="${v.tieneServiciosBasicos} ? 'Sí' : 'No'">Sí</td>
             <td th:text="${v.municipio != null ? v.municipio.nombre : 'N/A'}">Municipio</td>
             <td>

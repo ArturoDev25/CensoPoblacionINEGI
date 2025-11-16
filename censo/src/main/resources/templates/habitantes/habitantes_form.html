@@ -27,7 +27,7 @@
           
           <div class="row mb-3">
             <div class="col-md-6 mb-3">
-              <label class="form-label-custom">Nombre</label>
+              <label class="form-label-custom">Nombre *</label>
               <input type="text" class="form-control-custom" th:field="*{nombre}" 
                      placeholder="Ej: Juan" required>
             </div>
@@ -77,10 +77,10 @@
           </div>
         </div>
 
-        <!-- Información Familiar -->
+        <!-- Información Familiar y de Vivienda -->
         <div class="form-section">
           <h3 class="form-section-title">
-            <span>🏠</span> Información Familiar
+            <span></span> Información Familiar y de Vivienda
           </h3>
 
           <div class="row mb-3">
@@ -117,14 +117,20 @@
         <!-- Información Educativa y Laboral -->
         <div class="form-section">
           <h3 class="form-section-title">
-            <span>📚</span> Información Educativa y Laboral
+            <span></span> Información Educativa y Laboral
           </h3>
 
           <div class="row mb-3">
             <div class="col-md-6 mb-3">
-              <label class="form-label-custom">Ocupación</label>
-              <input type="text" class="form-control-custom" th:field="*{ocupacion}" 
-                     placeholder="Ej: Empleado, Comerciante, Estudiante">
+              <label class="form-label-custom">Actividad Económica</label>
+              <select class="form-select-custom" th:field="*{actividadEconomica.id}">
+                <option value="">Seleccione una actividad</option>
+                <option th:each="act : ${actividades}" 
+                        th:value="${act.id}" 
+                        th:text="${act.nombre}">
+                </option>
+              </select>
+              <small class="form-text">Actividad económica principal del habitante</small>
             </div>
 
             <div class="col-md-6 mb-3">
@@ -147,8 +153,8 @@
         <div class="info-box">
           <div class="info-icon">ℹ️</div>
           <div>
-            <strong>Importante:</strong> Asegúrese de asociar este habitante a una vivienda existente. 
-            Los campos marcados con asterisco (*) son obligatorios.
+            <strong>Importante:</strong> Asegúrese de asociar este habitante a una vivienda existente 
+            y seleccionar su actividad económica principal. Los campos marcados con asterisco (*) son obligatorios.
           </div>
         </div>
 

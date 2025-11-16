@@ -12,7 +12,9 @@
 <body>
   <div class="form-wrapper">
     <div class="form-container">
-      <h1 class="form-title">Nueva Vivienda</h1>
+      <h1 class="form-title" th:text="${vivienda.id == null ? 'Nueva Vivienda' : 'Editar Vivienda'}">
+        Nueva Vivienda
+      </h1>
 
       <form th:action="@{/viviendas/guardar}" th:object="${vivienda}" method="post">
         <input type="hidden" th:field="*{id}">
