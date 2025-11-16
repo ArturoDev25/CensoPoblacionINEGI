@@ -1,4 +1,3 @@
-/* fondo y centrado del login */
 body {
   background: linear-gradient(180deg, #c7ecec 0%, #e9f7f7 100%);
   display: flex;
@@ -7,7 +6,6 @@ body {
   height: 100vh;
 }
 
-/* contenedor principal del login */
 .login-container {
   background: #ffffff;
   border-radius: 20px;
@@ -17,16 +15,14 @@ body {
   text-align: center;
 }
 
-/* titulo institucional*/
 .logo-title {
-  font-size: 1em; /* mismo tamaño para ambas palabras */
+  font-size: 1em;
   font-weight: 700;
   color: #007777;
   margin-bottom: 10px;
-  letter-spacing: 0.5px; /* espacio entre letras */
+  letter-spacing: 0.5px;
 }
 
-/* titulo de la seccion */
 h2 {
   font-size: 1.8em;
   font-weight: 700;
@@ -34,13 +30,11 @@ h2 {
   margin-bottom: 25px;
 }
 
-/* grupo de campos de entrada */
 .form-group {
   position: relative;
   margin-bottom: 20px;
 }
 
-/* estilo de los inputs */
 .form-group input {
   width: 100%;
   padding: 12px 40px 12px 15px;
@@ -53,12 +47,10 @@ h2 {
   transition: border 0.2s ease;
 }
 
-/* efecto al enfocar el input */
 .form-group input:focus {
   border-color: var(--color-principal);
 }
 
-/* iconos dentro del input */
 .form-group i {
   position: absolute;
   right: 15px;
@@ -66,7 +58,6 @@ h2 {
   color: var(--color-principal);
 }
 
-/* boton de ingreso */
 button {
   width: 100%;
   padding: 12px;
@@ -80,20 +71,17 @@ button {
   transition: transform 0.2s ease, background 0.3s ease;
 }
 
-/* efecto hover del boton */
 button:hover {
   transform: scale(1.03);
   background: linear-gradient(90deg, #009191 0%, #36b8b8 100%);
 }
 
-/* mensaje de error */
 p.error {
   color: var(--color-error);
   font-size: 14px;
   margin-top: 10px;
 }
 
-/* pie de pagina */
 .footer {
   margin-top: 30px;
   font-size: 13px;
@@ -122,8 +110,6 @@ p.error {
   transition: opacity 1s ease-out;
 }
 
-/* Efecto fade-out */
 .logout-msg.fade-out {
   opacity: 0;
 }
-

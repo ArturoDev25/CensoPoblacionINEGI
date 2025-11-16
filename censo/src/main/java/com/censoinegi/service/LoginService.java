@@ -10,7 +10,7 @@ import com.censoinegi.model.Usuario;
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class LoginService {
-    
+
     private Usuario usuarioActivo;
 
     public Usuario getUsuarioActivo() {
@@ -28,5 +28,5 @@ public class LoginService {
     public boolean haySesionActiva() {
         return usuarioActivo != null;
     }
-    
+
 }

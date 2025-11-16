@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-  
+
 <head>
   <meta charset="UTF-8">
   <title th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}"></title>
@@ -12,28 +12,29 @@
 <body>
   <div class="form-wrapper">
     <div class="form-container">
-      <h1 class="form-title" th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}">Nueva Localidad</h1>
+      <h1 class="form-title" th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}">Nueva Localidad
+      </h1>
 
       <form th:action="@{/localidades/guardar}" th:object="${localidad}" method="post">
         <input type="hidden" th:field="*{id}">
 
         <div class="mb-4">
           <label class="form-label-custom">Nombre de la Localidad</label>
-          <input type="text" class="form-control-custom" th:field="*{nombre}" required placeholder="Ej: Centro Histórico Saltillo">
+          <input type="text" class="form-control-custom" th:field="*{nombre}" required
+            placeholder="Ej: Centro Histórico Saltillo">
         </div>
 
         <div class="mb-4">
           <label class="form-label-custom">Clave INEGI</label>
-          <input type="text" class="form-control-custom" th:field="*{claveInegi}" maxlength="50" placeholder="Ej: 05030A (opcional)">
+          <input type="text" class="form-control-custom" th:field="*{claveInegi}" maxlength="50"
+            placeholder="Ej: 05030A (opcional)">
         </div>
 
         <div class="mb-4">
           <label class="form-label-custom">Municipio</label>
           <select class="form-select-custom" th:field="*{municipio.id}" required>
             <option value="">Seleccione un municipio</option>
-            <option th:each="m : ${municipios}" 
-                    th:value="${m.id}" 
-                    th:text="${m.nombre}">
+            <option th:each="m : ${municipios}" th:value="${m.id}" th:text="${m.nombre}">
             </option>
           </select>
         </div>

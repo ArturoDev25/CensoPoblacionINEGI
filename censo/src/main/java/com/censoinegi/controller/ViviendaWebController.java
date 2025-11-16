@@ -32,7 +32,6 @@ public class ViviendaWebController {
     @Autowired
     private LoginService loginService;
 
-    // Listar viviendas
     @GetMapping
     public String listar(Model model) {
         if (!loginService.haySesionActiva()) {
@@ -44,7 +43,6 @@ public class ViviendaWebController {
         return "viviendas/viviendas";
     }
 
-    // Formulario nueva vivienda
     @GetMapping("/nueva")
     public String nueva(Model model) {
         if (!loginService.haySesionActiva()) {
@@ -58,7 +56,6 @@ public class ViviendaWebController {
         return "viviendas/vivienda_form";
     }
 
-    // 👉 CAMBIO: id ahora es String para coincidir con Vivienda.id
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Integer id, Model model, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
@@ -66,24 +63,22 @@ public class ViviendaWebController {
         }
 
         return viviendaService.findById(id)
-            .map(vivienda -> {
-                model.addAttribute("vivienda", vivienda);
-                model.addAttribute("municipios", municipioService.findAll());
-                model.addAttribute("tipos", tipoViviendaService.findAll());
-                model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-                return "viviendas/vivienda_form";
-            })
-            .orElseGet(() -> {
-                redirect.addFlashAttribute("error", "Vivienda no encontrada");
-                return "redirect:/viviendas";
-            });
+                .map(vivienda -> {
+                    model.addAttribute("vivienda", vivienda);
+                    model.addAttribute("municipios", municipioService.findAll());
+                    model.addAttribute("tipos", tipoViviendaService.findAll());
+                    model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
+                    return "viviendas/vivienda_form";
+                })
+                .orElseGet(() -> {
+                    redirect.addFlashAttribute("error", "Vivienda no encontrada");
+                    return "redirect:/viviendas";
+                });
     }
 
-    // Guardar vivienda (nueva o editada)
-    // 👉 CAMBIO: nombre correcto del RedirectAttributes y debug
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("vivienda") Vivienda vivienda,
-                          RedirectAttributes redirect) {
+            RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
             return "redirect:/login";
         }
@@ -100,7 +95,6 @@ public class ViviendaWebController {
         return "redirect:/viviendas";
     }
 
-    // 👉 CAMBIO: id también como String
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Integer id, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {

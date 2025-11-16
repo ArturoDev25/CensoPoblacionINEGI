@@ -1,11 +1,9 @@
-/* ===== Fondo y fuente general ===== */
 body {
   background-color: var(--color-fondo);
   color: var(--color-texto);
   font-family: var(--fuente-principal);
 }
 
-/* ===== Barra superior (mismo tono que login) ===== */
 .navbar.app-bar {
   background: linear-gradient(180deg, #c7ecec 0%, #e9f7f7 100%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -25,36 +23,31 @@ body {
   color: #004d4d !important;
 }
 
-/* ===== Tarjetas de estadísticas ===== */
 .stat-card {
   border: none;
-  background-color: #e9f7f7; /* mismo fondo que login */
+  background-color: #e9f7f7;
   border-radius: 14px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Efecto al pasar el cursor */
 .stat-card:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Título (número) */
 .stat-card h3 {
   color: #007777;
   font-weight: 800;
   margin: 0;
 }
 
-/* Descripción (texto debajo del número) */
 .stat-card p {
   margin: 4px 0 0;
   color: #004d4d;
   font-weight: 500;
 }
 
-/* ===== Tarjetas de gráficas ===== */
 .chart-card {
   border: none;
   border-radius: 14px;

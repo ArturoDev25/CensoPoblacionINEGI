@@ -27,14 +27,13 @@ public class Habitante {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String genero;
-    private Integer edad;  
+    private Integer edad;
     private String parentesco;
     private String ocupacion;
     private String escolaridad;
     private String estadoCivil;
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 
-    // Getters y Setters
     public String getId() {
         return id;
     }

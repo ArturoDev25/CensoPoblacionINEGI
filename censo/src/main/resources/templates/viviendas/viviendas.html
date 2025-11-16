@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-  
+
 <head>
   <meta charset="UTF-8">
   <title>Censo de Viviendas</title>
@@ -11,7 +11,6 @@
 
 <body>
 
-  <!-- Barra superior -->
   <nav class="navbar navbar-expand-lg shadow-sm app-bar">
     <div class="container-fluid px-4">
       <a class="navbar-brand fw-bold" href="#" style="color: #007777;">
@@ -19,8 +18,8 @@
       </a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" th:href="@{/municipios}">Municipios</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/localidades}">Localidades</a></li>
           <li class="nav-item"><a class="nav-link active" th:href="@{/viviendas}">Viviendas</a></li>
           <li class="nav-item"><a class="nav-link" th:href="@{/habitantes}">Habitantes</a></li>
           <li class="nav-item"><a class="nav-link text-danger" th:href="@{/logout}">Cerrar sesión</a></li>
@@ -29,25 +28,20 @@
     </div>
   </nav>
 
-  <!-- Contenedor principal -->
   <div class="container my-5 viviendas-container">
 
-    <!-- Contador -->
     <p class="text-end text-muted small contador-viviendas">
       Total:
       <span th:text="${#lists.size(viviendas)}"></span>
       <span th:text="${#lists.size(viviendas) == 1 ? 'vivienda registrada' : 'viviendas registradas'}"></span>
     </p>
 
-    <!-- Título -->
     <h2 class="fw-bold text-center mb-4">Censo de Viviendas</h2>
 
-    <!-- Botón nueva vivienda -->
     <div class="text-end mb-3">
       <a th:href="@{/viviendas/nueva}" class="btn btn-main">Nueva Vivienda</a>
     </div>
 
-    <!-- Tarjeta con tabla -->
     <div class="viviendas-card p-4">
       <table class="table align-middle text-center">
         <thead>
@@ -62,7 +56,6 @@
         </thead>
 
         <tbody>
-          <!-- FILAS DE DATOS CON HOVER -->
           <tr th:each="v : ${viviendas}" class="vivienda-row">
             <td th:text="${v.direccion}">Dirección</td>
             <td th:text="${v.tipoVivienda != null ? v.tipoVivienda.descripcion : 'N/A'}">Tipo</td>
@@ -71,13 +64,11 @@
             <td th:text="${v.municipio != null ? v.municipio.nombre : 'N/A'}">Municipio</td>
             <td>
               <a th:href="@{'/viviendas/editar/' + ${v.id}}" class="btn btn-edit">Editar</a>
-              <a th:href="@{'/viviendas/eliminar/' + ${v.id}}"
-                 class="btn btn-delete"
-                 onclick="return confirm('¿Eliminar esta vivienda?')">Eliminar</a>
+              <a th:href="@{'/viviendas/eliminar/' + ${v.id}}" class="btn btn-delete"
+                onclick="return confirm('¿Eliminar esta vivienda?')">Eliminar</a>
             </td>
           </tr>
 
-          <!-- MENSAJE SI LA LISTA ESTÁ VACÍA -->
           <tr th:if="${#lists.isEmpty(viviendas)}">
             <td colspan="6" class="text-center py-4 text-muted">
               No hay viviendas registradas
@@ -88,7 +79,6 @@
       </table>
     </div>
 
-    <!-- Volver -->
     <div class="mt-4 text-start">
       <a th:href="@{/dashboard}" class="btn btn-back">Volver al Dashboard</a>
     </div>

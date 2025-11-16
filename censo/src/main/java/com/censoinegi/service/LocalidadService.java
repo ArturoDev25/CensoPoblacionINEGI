@@ -31,16 +31,11 @@ public class LocalidadService {
         localidadRepository.deleteById(id);
     }
 
-    // Método para el select dinámico
     public List<Localidad> findByMunicipioId(Integer municipioId) {
         return localidadRepository.findByMunicipioId(municipioId);
+    }
 
+    public long contarLocalidades() {
+        return localidadRepository.count();
     }
 }
-
-    // Nuevo metodo--metodo para contar
-    //public long contarLocalidades() {
-    //return LocalidadRepository.count();
-   // }
-//}
-    

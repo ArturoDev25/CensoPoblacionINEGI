@@ -1,7 +1,6 @@
-/* Navbar estilo Dashboard */
 .navbar.app-bar {
   background: linear-gradient(180deg, #c7ecec 0%, #e9f7f7 100%);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .navbar.app-bar .nav-link {
@@ -16,23 +15,19 @@
   font-weight: 600;
 }
 
-/* Fondo */
 body {
   background: #ffffff !important;
 }
 
-/* Contenedor */
 .municipios-container {
   max-width: 1100px;
 }
 
-/* Contador*/
 .contador-municipios {
   font-size: .85rem;
   opacity: .7;
 }
 
-/* Botón principal*/
 .btn-main {
   background: linear-gradient(90deg, #00a6a6, #40cfcf);
   color: white;
@@ -41,18 +36,17 @@ body {
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,166,166,0.2);
+  box-shadow: 0 4px 12px rgba(0, 166, 166, 0.2);
   transition: .3s;
 }
 
 .btn-main:hover {
   background: linear-gradient(90deg, #009191, #36b8b8);
   transform: translateY(-2px);
-  
+
   color: white;
 }
 
-/* Botón volver*/
 .btn-back {
   background-color: #e9f7f7;
   border: 1px solid #c7ecec;
@@ -70,17 +64,15 @@ body {
   color: #005f5f;
 }
 
-/* Tarjeta igual a viviendas */
 .municipios-card {
   background: #f8fdfd;
   border-radius: 16px;
   padding: 0;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid #e0f5f5;
 }
 
-/* Tabla unificada */
 .table thead {
   background: #e9f7f7;
   border-bottom: 2px solid #c7ecec;
@@ -101,7 +93,6 @@ body {
   color: #053c3c;
 }
 
-/* Hover ultra suave */
 .municipio-row {
   transition: background-color .25s ease, box-shadow .25s ease;
   cursor: pointer;
@@ -109,14 +100,13 @@ body {
 
 .municipio-row:hover {
   background-color: #f6fefe !important;
-  box-shadow: 0 2px 6px rgba(0,166,166,0.10);
+  box-shadow: 0 2px 6px rgba(0, 166, 166, 0.10);
 }
 
 .municipio-row:hover td {
   background-color: #f6fefe !important;
 }
 
-/* Badges iguales a viviendas */
 .badge-clave,
 .badge-habitantes {
   background: #e0f5f5;
@@ -127,12 +117,10 @@ body {
   font-size: .9rem;
 }
 
-/* Badges verdes para contadores*/
 .badge-habitantes {
   background: #e0f5f5;
 }
 
-/* Botón editar/eliminar igual */
 .btn-edit,
 .btn-delete {
   padding: 8px 18px;
@@ -151,7 +139,7 @@ body {
 .btn-edit:hover {
   background-color: #008f8f;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0,166,166,0.3);
+  box-shadow: 0 4px 8px rgba(0, 166, 166, 0.3);
 }
 
 .btn-delete {
@@ -163,5 +151,5 @@ body {
 .btn-delete:hover {
   background-color: #0d2626;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(26,77,77,0.4);
+  box-shadow: 0 4px 8px rgba(26, 77, 77, 0.4);
 }

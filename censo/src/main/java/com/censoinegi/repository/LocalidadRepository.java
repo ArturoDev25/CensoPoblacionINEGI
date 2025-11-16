@@ -7,11 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.censoinegi.model.Localidad;
 
-
 @Repository
 public interface LocalidadRepository extends JpaRepository<Localidad, Integer> {
-    
-    // Spring Data JPA crea la query automáticamente
+
     List<Localidad> findByMunicipioId(Integer municipioId);
 
 }

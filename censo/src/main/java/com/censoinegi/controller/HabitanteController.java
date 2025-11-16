@@ -2,7 +2,6 @@ package com.censoinegi.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +31,7 @@ public class HabitanteController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Habitante> getById(@PathVariable UUID id) {
+    public Optional<Habitante> getById(@PathVariable String id) {
         return habitanteService.findById(id);
     }
 
@@ -48,7 +47,7 @@ public class HabitanteController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id) {
+    public void delete(@PathVariable String id) {
         habitanteService.deleteById(id);
     }
 }

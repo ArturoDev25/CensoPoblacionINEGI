@@ -24,10 +24,9 @@ public class ActividadEconomica {
     private String nombre;
 
     @ManyToMany(mappedBy = "actividades")
-    @JsonIgnore  
+    @JsonIgnore
     private List<Vivienda> viviendas;
 
-    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -36,9 +35,13 @@ public class ActividadEconomica {
         this.id = id;
     }
 
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public List<Vivienda> getViviendas() {
         return viviendas;

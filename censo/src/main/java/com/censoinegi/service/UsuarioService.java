@@ -6,9 +6,6 @@ import org.springframework.stereotype.Service;
 import com.censoinegi.model.Usuario;
 import com.censoinegi.repository.UsuarioRepository;
 
-/**
- * Servicio que gestiona la logica de negocio del usuario.
- */
 @Service
 public class UsuarioService {
 

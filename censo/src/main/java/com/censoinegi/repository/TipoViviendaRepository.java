@@ -7,5 +7,5 @@ import com.censoinegi.model.TipoVivienda;
 
 @Repository
 public interface TipoViviendaRepository extends JpaRepository<TipoVivienda, Integer> {
-    
+
 }

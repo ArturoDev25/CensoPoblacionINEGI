@@ -38,26 +38,20 @@ public class Vivienda {
 
     private String direccion;
     private String codigoPostal;
-    private Integer numHabitaciones;  
-    private Integer numBanos;         
-    private Boolean tieneServiciosBasicos;  
+    private Integer numHabitaciones;
+    private Integer numBanos;
+    private Boolean tieneServiciosBasicos;
     private String materialPrincipal;
     private Integer numHabitantes;
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 
     @ManyToMany
-    @JoinTable(
-        name = "vivienda_actividad",
-        joinColumns = @JoinColumn(name = "vivienda_id"),
-        inverseJoinColumns = @JoinColumn(name = "actividad_id")
-    )
+    @JoinTable(name = "vivienda_actividad", joinColumns = @JoinColumn(name = "vivienda_id"), inverseJoinColumns = @JoinColumn(name = "actividad_id"))
     private List<ActividadEconomica> actividades;
 
     @OneToMany(mappedBy = "vivienda", cascade = CascadeType.ALL)
     private List<Habitante> habitantes;
 
-    // Getters y Setters
-    
     public Integer getId() {
         return id;
     }

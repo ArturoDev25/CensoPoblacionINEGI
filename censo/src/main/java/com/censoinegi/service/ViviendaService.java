@@ -30,7 +30,7 @@ public class ViviendaService {
     public void deleteById(Integer id) {
         viviendaRepository.deleteById(id);
     }
-         // Nuevo metodo--metodo para contar viviendas M 
+
     public long contarViviendas() {
         return viviendaRepository.count();
     }

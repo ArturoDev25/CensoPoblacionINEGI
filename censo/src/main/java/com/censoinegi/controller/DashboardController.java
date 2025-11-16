@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-//import com.censoinegi.service.LocalidadService;
 import com.censoinegi.service.ActividadEconomicaService;
 import com.censoinegi.service.HabitanteService;
 import com.censoinegi.service.LoginService;
@@ -24,16 +23,13 @@ public class DashboardController {
     @Autowired
     private HabitanteService habitanteService;
 
-   // @Autowired
-    //private LocalidadService localidadService;
-
     @Autowired
     private ActividadEconomicaService actividadService;
 
     @Autowired
-    private LoginService loginService;  
+    private LoginService loginService;
 
-    @GetMapping({"/", "/dashboard"})
+    @GetMapping({ "/", "/dashboard" })
     public String mostrarDashboard(Model model) {
 
         if (!loginService.haySesionActiva()) {
@@ -41,9 +37,7 @@ public class DashboardController {
         }
 
         model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-
         model.addAttribute("totalMunicipios", municipioService.contarMunicipios());
-       // model.addAttribute("totalLocalidades", localidadService.contarLocalidades());
         model.addAttribute("totalViviendas", viviendaService.contarViviendas());
         model.addAttribute("totalHabitantes", habitanteService.contarHabitantes());
         model.addAttribute("totalActividades", actividadService.contarActividades());

@@ -1,4 +1,3 @@
-
 :root {
   --color-principal: #00a6a6;
   --color-secundario: #40cfcf;
@@ -10,13 +9,11 @@
   --fuente-principal: "Segoe UI", system-ui, Arial, sans-serif;
 }
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 
 body {
   font-family: var(--fuente-principal);
@@ -25,7 +22,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Tarjetas de estadísticas */
 .stat-card {
   background: white;
   border: none;
@@ -45,7 +41,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Modo oscuro */
 :root.dark-mode {
   --color-principal: #33d1d1;
   --color-secundario: #00a6a6;

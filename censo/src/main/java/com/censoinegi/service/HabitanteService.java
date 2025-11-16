@@ -2,7 +2,6 @@ package com.censoinegi.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class HabitanteService {
         return habitanteRepository.findAll();
     }
 
-    public Optional<Habitante> findById(UUID id) {
+    public Optional<Habitante> findById(String id) {
         return habitanteRepository.findById(id);
     }
 
@@ -28,11 +27,11 @@ public class HabitanteService {
         return habitanteRepository.save(habitante);
     }
 
-    public void deleteById(UUID id) {
+    public void deleteById(String id) {
         habitanteRepository.deleteById(id);
     }
-    // Nuevo metodo--metodo para contar habitantes M
+
     public long contarHabitantes() {
-    return habitanteRepository.count();
-}
+        return habitanteRepository.count();
+    }
 }

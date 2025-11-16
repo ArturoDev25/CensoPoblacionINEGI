@@ -15,14 +15,13 @@ public class TipoVivienda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;  
+    private Integer id;
 
     private String descripcion;
 
     @OneToMany(mappedBy = "tipoVivienda")
     private List<Vivienda> viviendas;
 
-    // Getters y Setters
     public Integer getId() {
         return id;
     }

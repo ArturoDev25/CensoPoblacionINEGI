@@ -50,10 +50,10 @@ public class LocalidadController {
     public void delete(@PathVariable Integer id) {
         localidadService.deleteById(id);
     }
-    //Obtener localidades por municipio (para formulario dinámico)
-@GetMapping("/por-municipio/{municipioId}")
-public List<Localidad> getByMunicipio(@PathVariable Integer municipioId) {
-    return localidadService.findByMunicipioId(municipioId);
-}
+
+    @GetMapping("/por-municipio/{municipioId}")
+    public List<Localidad> getByMunicipio(@PathVariable Integer municipioId) {
+        return localidadService.findByMunicipioId(municipioId);
+    }
 
 }

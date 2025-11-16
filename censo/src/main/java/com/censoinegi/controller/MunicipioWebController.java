@@ -14,9 +14,6 @@ import com.censoinegi.model.Municipio;
 import com.censoinegi.service.LoginService;
 import com.censoinegi.service.MunicipioService;
 
-/**
- * Controlador WEB para gestión de municipios (vistas HTML)
- */
 @Controller
 @RequestMapping("/municipios")
 public class MunicipioWebController {
@@ -27,7 +24,6 @@ public class MunicipioWebController {
     @Autowired
     private LoginService loginService;
 
-    // Listar municipios
     @GetMapping
     public String listar(Model model) {
         if (!loginService.haySesionActiva()) {
@@ -39,7 +35,6 @@ public class MunicipioWebController {
         return "municipios/municipios";
     }
 
-    // Formulario nuevo municipio
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
         if (!loginService.haySesionActiva()) {
@@ -51,7 +46,6 @@ public class MunicipioWebController {
         return "municipios/municipios_form";
     }
 
-    // Formulario editar municipio
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Integer id, Model model, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
@@ -59,18 +53,17 @@ public class MunicipioWebController {
         }
 
         return municipioService.findById(id)
-            .map(municipio -> {
-                model.addAttribute("municipio", municipio);
-                model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-                return "municipios/municipios_form";
-            })
-            .orElseGet(() -> {
-                redirect.addFlashAttribute("error", "Municipio no encontrado");
-                return "redirect:/municipios";
-            });
+                .map(municipio -> {
+                    model.addAttribute("municipio", municipio);
+                    model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
+                    return "municipios/municipios_form";
+                })
+                .orElseGet(() -> {
+                    redirect.addFlashAttribute("error", "Municipio no encontrado");
+                    return "redirect:/municipios";
+                });
     }
 
-    // Guardar municipio
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Municipio municipio, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
@@ -87,7 +80,6 @@ public class MunicipioWebController {
         return "redirect:/municipios";
     }
 
-    // Eliminar municipio
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Integer id, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {

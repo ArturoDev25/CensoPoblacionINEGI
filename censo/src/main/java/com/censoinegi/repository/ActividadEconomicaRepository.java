@@ -7,5 +7,5 @@ import com.censoinegi.model.ActividadEconomica;
 
 @Repository
 public interface ActividadEconomicaRepository extends JpaRepository<ActividadEconomica, Integer> {
-    
+
 }

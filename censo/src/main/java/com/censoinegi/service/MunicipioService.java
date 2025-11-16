@@ -30,8 +30,8 @@ public class MunicipioService {
     public void deleteById(Integer id) {
         municipioRepository.deleteById(id);
     }
-// Nuevo metodo--metodo para contar municipios M
-        public long contarMunicipios() {
-    return municipioRepository.count();
+
+    public long contarMunicipios() {
+        return municipioRepository.count();
     }
 }

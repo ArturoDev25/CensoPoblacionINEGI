@@ -15,9 +15,6 @@ import com.censoinegi.service.LocalidadService;
 import com.censoinegi.service.LoginService;
 import com.censoinegi.service.MunicipioService;
 
-/**
- * Controlador WEB para gestión de localidades (vistas HTML)
- */
 @Controller
 @RequestMapping("/localidades")
 public class LocalidadWebController {
@@ -31,7 +28,6 @@ public class LocalidadWebController {
     @Autowired
     private LoginService loginService;
 
-    // Listar localidades
     @GetMapping
     public String listar(Model model) {
         if (!loginService.haySesionActiva()) {
@@ -43,7 +39,6 @@ public class LocalidadWebController {
         return "localidades/localidades";
     }
 
-    // Formulario nueva localidad
     @GetMapping("/nueva")
     public String nueva(Model model) {
         if (!loginService.haySesionActiva()) {
@@ -53,10 +48,9 @@ public class LocalidadWebController {
         model.addAttribute("localidad", new Localidad());
         model.addAttribute("municipios", municipioService.findAll());
         model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-        return "localidades/localidad_form";
+        return "localidades/localidades_form";
     }
 
-    // Formulario editar localidad
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Integer id, Model model, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
@@ -64,19 +58,18 @@ public class LocalidadWebController {
         }
 
         return localidadService.findById(id)
-            .map(localidad -> {
-                model.addAttribute("localidad", localidad);
-                model.addAttribute("municipios", municipioService.findAll());
-                model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-                return "localidades/localidad_form";
-            })
-            .orElseGet(() -> {
-                redirect.addFlashAttribute("error", "Localidad no encontrada");
-                return "redirect:/localidades";
-            });
+                .map(localidad -> {
+                    model.addAttribute("localidad", localidad);
+                    model.addAttribute("municipios", municipioService.findAll());
+                    model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
+                    return "localidades/localidades_form";
+                })
+                .orElseGet(() -> {
+                    redirect.addFlashAttribute("error", "Localidad no encontrada");
+                    return "redirect:/localidades";
+                });
     }
 
-    // Guardar localidad
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Localidad localidad, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {
@@ -93,7 +86,6 @@ public class LocalidadWebController {
         return "redirect:/localidades";
     }
 
-    // Eliminar localidad
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Integer id, RedirectAttributes redirect) {
         if (!loginService.haySesionActiva()) {

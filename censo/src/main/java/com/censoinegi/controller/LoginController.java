@@ -16,32 +16,31 @@ public class LoginController {
 
     @Autowired
     private UsuarioService usuarioService;
-    
+
     @Autowired
-    private LoginService loginService;  // ✅ AGREGADO
+    private LoginService loginService;
 
     @GetMapping("/login")
     public String mostrarLogin(@RequestParam(value = "logout", required = false) String logout,
-                               Model model) {
+            Model model) {
         if (logout != null) {
             model.addAttribute("logoutMsg", "Sesión cerrada correctamente.");
         }
-        if (loginService.haySesionActiva()) {  // ✅ CAMBIADO
+        if (loginService.haySesionActiva()) {
             return "redirect:/dashboard";
         }
         return "login";
     }
 
-    
     @PostMapping("/login")
     public String procesarLogin(@RequestParam String correo,
-                                @RequestParam String password,
-                                Model model) {
+            @RequestParam String password,
+            Model model) {
 
         Usuario usuario = usuarioService.autenticar(correo, password);
 
         if (usuario != null) {
-            loginService.iniciarSesion(usuario);  // ✅ CAMBIADO
+            loginService.iniciarSesion(usuario);
             return "redirect:/dashboard";
         } else {
             model.addAttribute("error", "Correo o contraseña incorrectos");
@@ -49,11 +48,10 @@ public class LoginController {
         }
     }
 
-
     @GetMapping("/logout")
     public String cerrarSesion() {
-        loginService.cerrarSesion();  // ✅ CAMBIADO
+        loginService.cerrarSesion();
         return "redirect:/login?logout=true";
     }
-    
+
 }

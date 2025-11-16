@@ -30,7 +30,6 @@ public class Localidad {
     @OneToMany(mappedBy = "localidad")
     private List<Vivienda> viviendas;
 
-    
     public Integer getId() {
         return id;
     }
