@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.censoinegi.dto.MunicipioEstadisticas;
 import com.censoinegi.model.Municipio;
 import com.censoinegi.repository.MunicipioRepository;
 
@@ -33,5 +34,10 @@ public class MunicipioService {
 
     public long contarMunicipios() {
         return municipioRepository.count();
+    }
+
+    // Nuevo método para estadísticas
+    public List<MunicipioEstadisticas> obtenerEstadisticasPorMunicipio() {
+        return municipioRepository.obtenerEstadisticasPorMunicipio();
     }
 }

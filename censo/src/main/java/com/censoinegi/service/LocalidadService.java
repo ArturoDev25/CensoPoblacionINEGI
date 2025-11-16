@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.censoinegi.dto.LocalidadEstadisticas;
 import com.censoinegi.model.Localidad;
 import com.censoinegi.repository.LocalidadRepository;
 
@@ -37,5 +38,10 @@ public class LocalidadService {
 
     public long contarLocalidades() {
         return localidadRepository.count();
+    }
+
+    // Nuevo método para estadísticas
+    public List<LocalidadEstadisticas> obtenerEstadisticasPorLocalidad() {
+        return localidadRepository.obtenerEstadisticasPorLocalidad();
     }
 }
