@@ -62,7 +62,7 @@ public class MunicipioWebController {
             .map(municipio -> {
                 model.addAttribute("municipio", municipio);
                 model.addAttribute("usuarioActivo", loginService.getUsuarioActivo().getNombre());
-                return "municipios/municipio_form";
+                return "municipios/municipios_form";
             })
             .orElseGet(() -> {
                 redirect.addFlashAttribute("error", "Municipio no encontrado");

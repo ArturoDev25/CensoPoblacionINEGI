@@ -20,8 +20,8 @@ public class ActividadEconomica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
-    private String descripcion;
+    @Column(name = "nombre", nullable = false, unique = true)
+    private String nombre;
 
     @ManyToMany(mappedBy = "actividades")
     @JsonIgnore  
@@ -36,13 +36,9 @@ public class ActividadEconomica {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public String getNombre() { return nombre; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     public List<Vivienda> getViviendas() {
         return viviendas;
