@@ -20,7 +20,7 @@
     <div class="container-fluid px-4 my-5">
         <h2 class="fw-bold mb-5 text-center dashboard-title">Resumen del Censo</h2>
 
-        <!-- TARJETAS DE RESUMEN - MISMO TAMAÑO -->
+        <!-- TARJETAS DE RESUMEN -->
         <div class="row justify-content-center mb-5 g-4">
             <div class="col-6 col-md-4 col-lg-2">
                 <div class="card stat-card h-100">
@@ -68,12 +68,13 @@
             </div>
         </div>
 
-        <!-- GRÁFICOS MEJORADOS -->
+        <!-- GRÁFICAS PRINCIPALES (4 GRÁFICAS) -->
         <div class="row g-4 mb-5">
+            <!-- GRÁFICA 1: Población por Municipio -->
             <div class="col-lg-6">
                 <div class="card chart-card shadow-sm h-100">
                     <div class="card-body p-4">
-                        <h5 class="chart-title mb-4">Distribución por Municipio</h5>
+                        <h5 class="chart-title mb-4">Top 10 Municipios por Población</h5>
                         <div class="chart-container">
                             <canvas id="graficoMunicipios"></canvas>
                         </div>
@@ -81,12 +82,37 @@
                 </div>
             </div>
 
+            <!-- GRÁFICA 2: Localidades con Mayor Población -->
             <div class="col-lg-6">
                 <div class="card chart-card shadow-sm h-100">
                     <div class="card-body p-4">
-                        <h5 class="chart-title mb-4">Tendencias de Viviendas</h5>
+                        <h5 class="chart-title mb-4">Top 10 Localidades por Población</h5>
                         <div class="chart-container">
                             <canvas id="graficoLocalidades"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRÁFICA 3: Actividades Económicas -->
+            <div class="col-lg-6">
+                <div class="card chart-card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="chart-title mb-4">Top 10 Actividades Económicas</h5>
+                        <div class="chart-container">
+                            <canvas id="graficoActividades"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRÁFICA 4: Distribución por Edad -->
+            <div class="col-lg-6">
+                <div class="card chart-card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="chart-title mb-4"> Distribución por Rangos de Edad</h5>
+                        <div class="chart-container">
+                            <canvas id="graficoEdades"></canvas>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.censoinegi.dto.ActividadEstadisticas;
+import com.censoinegi.dto.EdadEstadisticas;
 import com.censoinegi.dto.LocalidadEstadisticas;
 import com.censoinegi.dto.MunicipioEstadisticas;
 import com.censoinegi.service.ActividadEconomicaService;
@@ -59,8 +61,7 @@ public class DashboardController {
         return "menu/dashboard";
     }
 
-    //Endpoint para obtener datos de municipios y localidades para gráficos
-
+    // Endpoint para obtener datos de municipios
     @GetMapping("/api/dashboard/municipios")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> obtenerDatosMunicipios() {
@@ -91,6 +92,7 @@ public class DashboardController {
         return ResponseEntity.ok(response);
     }
 
+    // Endpoint para obtener datos de localidades
     @GetMapping("/api/dashboard/localidades")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> obtenerDatosLocalidades() {
@@ -107,6 +109,53 @@ public class DashboardController {
 
         List<Long> habitantes = top10.stream()
                 .map(LocalidadEstadisticas::getTotalHabitantes)
+                .collect(Collectors.toList());
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("labels", labels);
+        response.put("habitantes", habitantes);
+
+        return ResponseEntity.ok(response);
+    }
+
+    // NUEVO: Endpoint para obtener datos de actividades económicas
+    @GetMapping("/api/dashboard/actividades")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> obtenerDatosActividades() {
+        List<ActividadEstadisticas> estadisticas = habitanteService.obtenerEstadisticasPorActividad();
+
+        // Top 10 actividades
+        List<ActividadEstadisticas> top10 = estadisticas.stream()
+                .limit(10)
+                .collect(Collectors.toList());
+
+        List<String> labels = top10.stream()
+                .map(ActividadEstadisticas::getNombreActividad)
+                .collect(Collectors.toList());
+
+        List<Long> habitantes = top10.stream()
+                .map(ActividadEstadisticas::getTotalHabitantes)
+                .collect(Collectors.toList());
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("labels", labels);
+        response.put("habitantes", habitantes);
+
+        return ResponseEntity.ok(response);
+    }
+
+    // NUEVO: Endpoint para obtener datos por rango de edad
+    @GetMapping("/api/dashboard/edades")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> obtenerDatosEdades() {
+        List<EdadEstadisticas> estadisticas = habitanteService.obtenerEstadisticasPorEdad();
+
+        List<String> labels = estadisticas.stream()
+                .map(EdadEstadisticas::getRangoEdad)
+                .collect(Collectors.toList());
+
+        List<Long> habitantes = estadisticas.stream()
+                .map(EdadEstadisticas::getTotalHabitantes)
                 .collect(Collectors.toList());
 
         Map<String, Object> response = new HashMap<>();
