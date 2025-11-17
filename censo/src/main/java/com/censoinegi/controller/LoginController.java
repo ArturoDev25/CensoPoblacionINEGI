@@ -11,6 +11,8 @@ import com.censoinegi.model.Usuario;
 import com.censoinegi.service.LoginService;
 import com.censoinegi.service.UsuarioService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -49,8 +51,8 @@ public class LoginController {
     }
 
     @GetMapping("/logout")
-    public String cerrarSesion() {
-        loginService.cerrarSesion();
+    public String cerrarSesion(HttpSession session) {
+        session.invalidate();
         return "redirect:/login?logout=true";
     }
 
