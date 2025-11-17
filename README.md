@@ -173,5 +173,3 @@ CensoPoblacionINEGI/
 ├── .gitignore
 ├── .gitattributes
 └── target/
-
-
