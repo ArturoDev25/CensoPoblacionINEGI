@@ -71,10 +71,17 @@ public class MunicipioWebController {
         }
 
         try {
+            boolean esNuevo = (municipio.getId() == null);
             municipioService.save(municipio);
-            redirect.addFlashAttribute("success", "Municipio guardado exitosamente");
+            
+            // Mensaje diferente según si es creación o edición
+            if (esNuevo) {
+                redirect.addFlashAttribute("success", "Municipio guardado exitosamente");
+            } else {
+                redirect.addFlashAttribute("success", "Municipio editado exitosamente");
+            }
         } catch (Exception e) {
-            redirect.addFlashAttribute("error", "Error: " + e.getMessage());
+            redirect.addFlashAttribute("error", "Error al guardar municipio: " + e.getMessage());
         }
 
         return "redirect:/municipios";
