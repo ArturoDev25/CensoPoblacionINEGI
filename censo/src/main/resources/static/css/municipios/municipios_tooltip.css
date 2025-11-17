@@ -15,7 +15,7 @@
   font-size: 0.85rem;
   white-space: nowrap;
   bottom: 125%;
-  left: 50%;
+  left: 50%;/* Center the tooltip horizontally */
   transform: translateX(-50%);
   box-shadow: 0 4px 12px rgba(0, 119, 119, 0.3);
   opacity: 0;

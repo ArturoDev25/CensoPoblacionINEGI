@@ -26,7 +26,7 @@ public class MunicipioWebController {
 
     @GetMapping
     public String listar(Model model) {
-        if (!loginService.haySesionActiva()) {
+        if (!loginService.haySesionActiva()) {// Verifica si hay una sesión activa
             return "redirect:/login";
         }
 
@@ -37,7 +37,7 @@ public class MunicipioWebController {
 
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
-        if (!loginService.haySesionActiva()) {
+        if (!loginService.haySesionActiva()) {// Verifica si hay una sesión activa
             return "redirect:/login";
         }
 
