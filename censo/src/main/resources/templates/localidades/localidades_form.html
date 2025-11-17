@@ -12,8 +12,17 @@
 <body>
   <div class="form-wrapper">
     <div class="form-container">
-      <h1 class="form-title" th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}">Nueva Localidad
-      </h1>
+      <h1 class="form-title" th:text="${localidad.id == null ? 'Nueva Localidad' : 'Editar Localidad'}">Nueva Localidad</h1>
+
+      <!-- Mensajes de éxito/error -->
+      <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span th:text="${success}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
 
       <form th:action="@{/localidades/guardar}" th:object="${localidad}" method="post">
         <input type="hidden" th:field="*{id}">

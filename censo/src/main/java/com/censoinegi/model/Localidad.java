@@ -27,9 +27,11 @@ public class Localidad {
     @JoinColumn(name = "municipio_id")
     private Municipio municipio;
 
-    @OneToMany(mappedBy = "localidad")
+    // IMPORTANTE: Cambie  a EAGER para que se carguen las viviendas automáticamente --Mich
+    @OneToMany(mappedBy = "localidad", fetch = FetchType.EAGER)
     private List<Vivienda> viviendas;
 
+    // Getters y Setters
     public Integer getId() {
         return id;
     }

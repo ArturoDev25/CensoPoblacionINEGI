@@ -1,0 +1,99 @@
+.vivienda-tooltip {
+  position: relative;
+  cursor: help;
+  display: inline-block;
+}
+
+.vivienda-tooltip .badge-contador {
+  background-color: #00a6a6;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.vivienda-tooltip:hover .badge-contador {
+  background-color: #008f8f;
+  transform: scale(1.05);
+}
+
+.vivienda-tooltip .tooltip-content {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1000;
+  background-color: #007777;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  bottom: 135%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 6px 16px rgba(0, 119, 119, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  max-width: 350px;
+  min-width: 200px;
+}
+
+.vivienda-tooltip .tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #007777 transparent transparent transparent;
+}
+
+.vivienda-tooltip:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-title {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+}
+
+.vivienda-item {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  padding: 3px 0;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.vivienda-item:last-child {
+  margin-bottom: 0;
+}
+
+.vivienda-item:hover {
+  color: #c7ecec;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vivienda-tooltip .tooltip-content {
+    max-width: 250px;
+    font-size: 0.75rem;
+    padding: 10px 14px;
+  }
+  
+  .tooltip-title {
+    font-size: 0.8rem;
+  }
+  
+  .vivienda-item {
+    font-size: 0.7rem;
+  }
+}

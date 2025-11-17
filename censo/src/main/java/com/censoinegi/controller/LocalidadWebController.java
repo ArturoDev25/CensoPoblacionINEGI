@@ -77,10 +77,18 @@ public class LocalidadWebController {
         }
 
         try {
+            System.out.println("GUARDANDO LOCALIDAD -> " + localidad.getNombre()); // DEBUG
             localidadService.save(localidad);
-            redirect.addFlashAttribute("success", "Localidad guardada exitosamente");
+            
+            // Mensaje diferenciado según si es creación o edición
+            if (localidad.getId() == null) {
+                redirect.addFlashAttribute("success", "Localidad creada exitosamente");
+            } else {
+                redirect.addFlashAttribute("success", "Localidad editada exitosamente");
+            }
         } catch (Exception e) {
-            redirect.addFlashAttribute("error", "Error: " + e.getMessage());
+            e.printStackTrace();
+            redirect.addFlashAttribute("error", "Error al guardar localidad: " + e.getMessage());
         }
 
         return "redirect:/localidades";
@@ -96,6 +104,7 @@ public class LocalidadWebController {
             localidadService.deleteById(id);
             redirect.addFlashAttribute("success", "Localidad eliminada exitosamente");
         } catch (Exception e) {
+            e.printStackTrace();
             redirect.addFlashAttribute("error", "Error al eliminar: " + e.getMessage());
         }
 
