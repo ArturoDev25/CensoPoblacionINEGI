@@ -58,3 +58,120 @@ Extension Pack for Java
 Spring Boot Extension Pack
 Maven for Java
 ```
+## Estructura del proyecto
+CensoPoblacionINEGI/
+│
+├── .vs/
+│   └── CensoPoblacionINEGI/
+│       └── slnx.sqlite
+│
+├── .vscode/
+│   ├── launch.json
+│   └── settings.json
+│
+├── censo/
+│   ├── .mvn/
+│   │   └── wrapper/
+│   │       └── maven-wrapper.properties
+│   │
+│   └── src/
+│       └── main/
+│           ├── java/
+│           │   └── com/
+│           │       └── censoinegi/
+│           │           ├── controller/
+│           │           │   ├── ActividadEconomicaController.java
+│           │           │   ├── DashboardController.java
+│           │           │   ├── HabitanteController.java
+│           │           │   ├── HabitanteWebController.java
+│           │           │   ├── LocalidadController.java
+│           │           │   ├── LocalidadWebController.java
+│           │           │   ├── LoginController.java
+│           │           │   ├── MunicipioController.java
+│           │           │   ├── MunicipioWebController.java
+│           │           │   ├── TipoViviendaController.java
+│           │           │   ├── ViviendaController.java
+│           │           │   └── ViviendaWebController.java
+│           │           │
+│           │           ├── model/
+│           │           │   ├── ActividadEconomica.java
+│           │           │   ├── Habitante.java
+│           │           │   ├── Localidad.java
+│           │           │   ├── Municipio.java
+│           │           │   ├── TipoVivienda.java
+│           │           │   ├── Usuario.java
+│           │           │   └── Vivienda.java
+│           │           │
+│           │           ├── repository/
+│           │           │   ├── ActividadEconomicaRepository.java
+│           │           │   ├── HabitanteRepository.java
+│           │           │   ├── LocalidadRepository.java
+│           │           │   ├── MunicipioRepository.java
+│           │           │   ├── TipoViviendaRepository.java
+│           │           │   ├── UsuarioRepository.java
+│           │           │   └── ViviendaRepository.java
+│           │           │
+│           │           ├── service/
+│           │           │   ├── ActividadEconomicaService.java
+│           │           │   ├── HabitanteService.java
+│           │           │   ├── LocalidadService.java
+│           │           │   ├── LoginService.java
+│           │           │   ├── MunicipioService.java
+│           │           │   ├── TipoViviendaService.java
+│           │           │   ├── UsuarioService.java
+│           │           │   └── ViviendaService.java
+│           │           │
+│           │           └── CensoInegiApplication.java
+│           │
+│           └── resources/
+│               ├── static/
+│               │   ├── css/
+│               │   │   ├── habitantes/
+│               │   │   │   ├── habitantes.css
+│               │   │   │   └── habitantes_form.css
+│               │   │   ├── localidades/
+│               │   │   │   ├── localidades.css
+│               │   │   │   └── localidad_form.css
+│               │   │   ├── municipios/
+│               │   │   │   ├── municipios.css
+│               │   │   │   └── municipio_form.css
+│               │   │   ├── viviendas/
+│               │   │   │   ├── viviendas.css
+│               │   │   │   ├── vivienda_form.css
+│               │   │   │   └── viviendas_tooltip.css
+│               │   │   ├── base.css
+│               │   │   └── dashboard.css
+│               │   │
+│               │   └── js/
+│               │       ├── dashboard.js
+│               │       └── vivienda_form.js
+│               │
+│               └── templates/
+│                   ├── habitantes/
+│                   │   ├── habitantes.html
+│                   │   └── habitantes_form.html
+│                   ├── localidades/
+│                   │   ├── localidades.html
+│                   │   └── localidades_form.html
+│                   ├── municipios/
+│                   │   ├── municipios.html
+│                   │   └── municipios_form.html
+│                   ├── viviendas/
+│                   │   ├── viviendas.html
+│                   │   └── vivienda_form.html
+│                   ├── menu/
+│                   │   └── fragments/
+│                   │       └── navbar.html
+│                   ├── dashboard.html
+│                   └── login.html
+│
+├── application.properties
+├── pom.xml
+├── README.md
+├── mvnw
+├── mvnw.cmd
+├── .gitignore
+├── .gitattributes
+└── target/
+
+
